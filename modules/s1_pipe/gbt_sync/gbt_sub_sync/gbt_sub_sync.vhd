@@ -1,0 +1,180 @@
+-------------------------------------------------------------------------------
+-- --
+-- University of Cape Town, Electrical Engineering Department--
+-- --
+-------------------------------------------------------------------------------
+-- unit name: gbt_sub_sync.vhd
+--
+-- author: Nathan Boyles (nathanh.boyles@gmail.com)
+--
+-- date: 07/04/2020
+--
+-- version: 0.1
+--
+-- description: Submodule for GBT data sychronization module
+--
+-- dependencies: <entity name>, ...
+--
+-- references: <reference one>
+-- <reference two> ...
+--
+-- modified by: Nathan Boyles (nathanh.boyles@gmail.com)
+--
+-------------------------------------------------------------------------------
+-- last changes: 07/04/2020 NB Full System Integration
+-- <extended description>
+-------------------------------------------------------------------------------
+-- TODO: <next thing to do>
+-- <another thing to do>
+--
+-------------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use work.sig_defs_pkg.all;
+use work.util_pkg.all;
+use work.var_defs_pkg.all;
+
+entity gbt_sub_sync is
+port(clk_i: in std_logic;
+	  reset_n_i: in std_logic;
+	  gbt_s2_busy_i: in std_logic;
+	  gbt_sub_syncI: in t_gbt_sub_syncI;
+	  gbt_sub_syncO: out t_gbt_sub_syncO
+);
+end gbt_sub_sync;
+
+architecture main of gbt_sub_sync is
+
+--==============================================================
+--Signal Declaration
+--==============================================================
+	type data_port_arr_i is array (0 to 7) of std_logic_vector(63 downto 0);
+	signal s_data_port_arr_i: data_port_arr_i;
+	
+	
+	type data_port_arr_o is array (0 to 7) of std_logic_vector(63 downto 0);
+	signal s_data_port_arr_o: data_port_arr_o;
+	
+	signal s_sync: std_logic_vector(7 downto 0);
+	signal gbt_sub_sync_rd: std_logic_vector(7 downto 0):="00000000";
+	signal s_gbt_sync_wr: std_logic_vector(7 downto 0);
+
+--==============================================================
+--Component Declaration
+--==============================================================
+
+
+	component fifo is
+		port 
+		(
+			data  : in  std_logic_vector(63 downto 0) := (others => 'X'); -- datain
+         wrreq : in  std_logic                     := 'X';             -- wrreq
+         rdreq : in  std_logic                     := 'X';             -- rdreq
+         clock : in  std_logic                     := 'X';             -- clk
+         sclr  : in  std_logic                     := 'X';             -- sclr
+         q     : out std_logic_vector(63 downto 0);                    -- dataout
+         empty : out std_logic                                         -- empty
+      );
+    end component fifo;
+	 
+
+	
+begin
+
+	s_data_port_arr_i(0)<=gbt_sub_syncI.gbt_rfmt_data_0_i;
+	s_data_port_arr_i(1)<=gbt_sub_syncI.gbt_rfmt_data_1_i;
+	s_data_port_arr_i(2)<=gbt_sub_syncI.gbt_rfmt_data_2_i;
+	s_data_port_arr_i(3)<=gbt_sub_syncI.gbt_rfmt_data_3_i;
+	s_data_port_arr_i(4)<=gbt_sub_syncI.gbt_rfmt_data_4_i;
+	s_data_port_arr_i(5)<=gbt_sub_syncI.gbt_rfmt_data_5_i;
+	s_data_port_arr_i(6)<=gbt_sub_syncI.gbt_rfmt_data_6_i;
+	s_data_port_arr_i(7)<=gbt_sub_syncI.gbt_rfmt_data_7_i;
+	
+
+--==============================================================
+--Component Instantiation
+--==============================================================
+	
+	s_fifo: for i in 7 downto 0 generate
+	
+	begin
+		fifo_nst : component fifo
+        port map (
+            data  => s_data_port_arr_i(i),  --  fifo_input.datain
+            wrreq => gbt_sub_syncI.gbt_rfmt_data_v_i(i), --            .wrreq
+            rdreq => gbt_sub_sync_rd(i), --            .rdreq
+            clock => clk_i, --            .clk
+            sclr  => reset_n_i,  --            .sclr
+            q     => s_data_port_arr_o(i),     -- fifo_output.dataout
+            empty => s_sync(i)  --            .empty
+        );
+	end generate s_fifo;
+
+	process(clk_i,gbt_s2_busy_i,reset_n_i,gbt_sub_syncI) is
+	--=========================================================
+	--Variable Declaration
+	--=========================================================
+	
+	--Add a not process
+	variable gbt_s2_busy_sig: boolean:=false;
+	variable f_count: integer range -4 to 8:=8;
+	variable s2_flag: boolean:=false;
+	begin
+		if rising_edge(clk_i) then 
+			if s_sync=x"00" and gbt_s2_busy_i/='1' and s2_flag=false then --checks if any of the fifo's are empty, if s2 ro not in progress
+				gbt_sub_syncO.gbt_sub_sync_sync_o<='1'; --indicates sync achieved and initiates readout
+			end if;
+			if gbt_s2_busy_i='1' and gbt_s2_busy_sig=false then 
+				f_count:=f_count-1;
+				case f_count is 
+						when 7 =>
+							gbt_sub_sync_rd<=x"80"; --data delayed 2 cycles in fifo
+						when 6 =>
+							gbt_sub_sync_rd<=x"40";
+						when 5 =>
+							gbt_sub_syncO.gbt_sub_sync_data_v_o<='1';
+							gbt_sub_sync_rd<=x"20";
+							gbt_sub_syncO.gbt_sub_sync_data_o<=s_data_port_arr_o(7);
+						when 4 =>
+							gbt_sub_sync_rd<=x"10";
+							gbt_sub_syncO.gbt_sub_sync_data_o<=s_data_port_arr_o(6);
+						when 3 =>
+							gbt_sub_sync_rd<=x"08";
+							gbt_sub_syncO.gbt_sub_sync_data_o<=s_data_port_arr_o(5);
+						when 2 =>
+							gbt_sub_sync_rd<=x"04";
+							gbt_sub_syncO.gbt_sub_sync_data_o<=s_data_port_arr_o(4);
+						when 1 =>
+							gbt_sub_sync_rd<=x"02";
+							gbt_sub_syncO.gbt_sub_sync_data_o<=s_data_port_arr_o(3);
+						when 0 =>
+							gbt_sub_sync_rd<=x"01";
+							gbt_sub_syncO.gbt_sub_sync_data_o<=s_data_port_arr_o(2);
+						when -1 =>
+							gbt_sub_sync_rd<=x"00";
+							gbt_sub_syncO.gbt_sub_sync_data_o<=s_data_port_arr_o(1);
+						when -2 =>
+							gbt_sub_syncO.gbt_sub_sync_data_o<=s_data_port_arr_o(0);
+						when -3 =>
+							f_count:= 8;
+							gbt_s2_busy_sig:=true;
+							--gbt_sub_sync_rd<=x"00";
+							gbt_sub_syncO.gbt_sub_sync_data_v_o<='0';
+							gbt_sub_syncO.gbt_sub_sync_sync_o<='0';
+						when others =>
+							gbt_sub_sync_rd<=x"00";
+							gbt_sub_syncO.gbt_sub_sync_data_v_o<='0';
+							gbt_sub_syncO.gbt_sub_sync_sync_o<='0';
+							f_count:= 8;
+					end case;
+			elsif gbt_s2_busy_i='0' then
+				gbt_s2_busy_sig:=false;
+				--gbt_sub_syncO.gbt_sub_sync_sync_o<='0';
+				f_count:= 8;
+			end if;	
+		end if;
+	end process;
+	
+
+end main;

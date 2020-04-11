@@ -1,0 +1,345 @@
+Synthesis report
+Wed Apr  8 01:16:08 2020
+Quartus Prime Version 19.1.0 Build 240 03/26/2019 SJ Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Synthesis Summary
+  2. Synthesis Settings
+  3. Parallel Compilation
+  4. Synthesis Source Files Read
+  5. Synthesis Partition Summary
+  6. Partition "root_partition" Resource Utilization by Entity
+  7. Registers Removed During Synthesis
+  8. General Register Statistics for Partition "root_partition"
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Post-Synthesis Netlist Statistics for Partition "root_partition"
+ 11. Synthesis Resource Usage Summary for Partition "root_partition"
+ 12. Synthesis Messages
+
+
+
++---------------------------------------------------------------+
+; Synthesis Summary                                             ;
++-----------------------+---------------------------------------+
+; Synthesis Status      ; Successful - Wed Apr  8 01:16:07 2020 ;
+; Revision Name         ; o2_h_synth                            ;
+; Top-level Entity Name ; o2_h_synth                            ;
+; Family                ; Cyclone 10 GX                         ;
++-----------------------+---------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Synthesis Settings                                                                                                        ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 10CX085YF672E5G    ;                    ;
+; Top-level entity name                                                           ; o2_h_synth         ; o2_h_synth         ;
+; Family name                                                                     ; Cyclone 10 GX      ; Cyclone 10 GX      ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Enable Design Assistant in the compilation flow                                 ; Off                ; Off                ;
+; Design Assistant include IP blocks                                              ; Off                ; Off                ;
+; Design Assistant limit on reported violations per rule                          ; 500                ; 500                ;
+; Optimization Mode                                                               ; Balanced           ; Balanced           ;
+; Allow Register Merging                                                          ; On                 ; On                 ;
+; Allow Register Duplication                                                      ; On                 ; On                 ;
+; Allow Register Retiming                                                         ; On                 ; On                 ;
+; Allow RAM Retiming                                                              ; Off                ; Off                ;
+; Allow DSP Retiming                                                              ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Auto               ; Auto               ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Number of Protected Registers Reported in Synthesis Report                      ; 100                ; 100                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
+; Disable DSP Negate Inferencing                                                  ; Off                ; Off                ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Size of the Latch Report                                                        ; 100                ; 100                ;
+; Enable State Machines Inference                                                 ; On                 ; On                 ;
+; Enable formal verification support during compilation                           ; Off                ; Off                ;
+; Size of the PR Initial Conditions Report                                        ; 15                 ; 15                 ;
+; Report PR Initial Values as Errors                                              ; Off                ; Off                ;
+; Fractal Synthesis                                                               ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 2      ;
+; Maximum used               ; 2      ;
++----------------------------+--------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Synthesis Source Files Read                                                                                                                                                                                            ;
++------------------------------------------+-----------------+--------------------------------------------------------------------------------------------------------------+---------+----------------------------------+
+; File Name with User-Entered Path         ; File Type       ; File Name with Absolute Path                                                                                 ; Library ; MD5                              ;
++------------------------------------------+-----------------+--------------------------------------------------------------------------------------------------------------+---------+----------------------------------+
+; ../../../../../packages/var_defs_pkg.vhd ; User VHDL File  ; C:/Users/natha/Desktop/mid_cru_proto/packages/var_defs_pkg.vhd                                               ;         ; a500810695c98b8392cca0a75e4f8863 ;
+; ../../../../../packages/util_pkg.vhd     ; User VHDL File  ; C:/Users/natha/Desktop/mid_cru_proto/packages/util_pkg.vhd                                                   ;         ; b891324ced6ce7a69387b319e1a090d0 ;
+; ../../../../../packages/sig_defs_pkg.vhd ; User VHDL File  ; C:/Users/natha/Desktop/mid_cru_proto/packages/sig_defs_pkg.vhd                                               ;         ; 5499a31b5af9bca851caed62aff693c9 ;
+; in_files/o2_h_synth_if.txt               ; User File       ; C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/o2_h_synth/in_files/o2_h_synth_if.txt ;         ; 10498784e0e00324995e96dd8e342bc6 ;
+; o2_h_synth_tb.vhd                        ; User VHDL File  ; C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/o2_h_synth/o2_h_synth_tb.vhd          ;         ; 95a696e8d0e56065b945f99168aa18b3 ;
+; o2_h_synth.vhd                           ; User VHDL File  ; C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/o2_h_synth/o2_h_synth.vhd             ;         ; 0d60359e1653e5bf8f73aad05a349d65 ;
++------------------------------------------+-----------------+--------------------------------------------------------------------------------------------------------------+---------+----------------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Synthesis Partition Summary                                                                ;
++----------------+----------------+---------+--------------+-------+-------------------------+
+; Partition Name ; Hierarchy Path ; Type    ; Preservation ; Empty ; Partition Database File ;
++----------------+----------------+---------+--------------+-------+-------------------------+
+; root_partition ; |              ; Default ;              ;       ;                         ;
++----------------+----------------+---------+--------------+-------+-------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition "root_partition" Resource Utilization by Entity                                                                                                                                       ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; IOPLLs ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------+---------------------+-------------+--------------+
+; |                          ; 80 (80)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; 0 (0)  ; |                   ; o2_h_synth  ; altera_work  ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                          ;
++----------------------------------------+----------------------------------------------------+
+; Register name                          ; Reason for Removal                                 ;
++----------------------------------------+----------------------------------------------------+
+; o2_h_synthO.o2_h_synth_mt12_o[0]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[0]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt21_o[0]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[0]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt22_o[0]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[0]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt12_o[1]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[1]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt21_o[1]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[1]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt22_o[1]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[1]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt12_o[2]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[2]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt21_o[2]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[2]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt22_o[2]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[2]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt12_o[3]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[3]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt21_o[3]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[3]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt22_o[3]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[3]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt12_o[4]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[4]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt21_o[4]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[4]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt22_o[4]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[4]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt12_o[5]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[5]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt21_o[5]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[5]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt22_o[5]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[5]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt12_o[8]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[8]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt21_o[8]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[8]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt22_o[8]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[8]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt12_o[12]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt11_o[12]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt22_o[12]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt11_o[12]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt22_o[13]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt12_o[13]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt22_o[17]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt22_o[16]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt11_o[18]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt11_o[17]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt12_o[18]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt11_o[17]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt21_o[18]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt11_o[17]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt12_o[6]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[6]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt21_o[6]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[6]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt22_o[6]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[6]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt12_o[7]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[7]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt21_o[7]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[7]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt22_o[7]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[7]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt12_o[9]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[9]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt21_o[9]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[9]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt22_o[9]~reg0  ; Merged with o2_h_synthO.o2_h_synth_mt11_o[9]~reg0  ;
+; o2_h_synthO.o2_h_synth_mt12_o[10]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt11_o[10]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt21_o[10]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt11_o[10]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt22_o[10]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt11_o[10]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt12_o[11]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt11_o[11]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt21_o[11]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt11_o[11]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt22_o[11]~reg0 ; Merged with o2_h_synthO.o2_h_synth_mt11_o[11]~reg0 ;
+; o2_h_synthO.o2_h_synth_mt21_o[17]~reg0 ; Stuck at VCC due to stuck port data_in             ;
+; o2_h_synthO.o2_h_synth_mt11_o[17]~reg0 ; Stuck at GND due to stuck port data_in             ;
+; Total Number of Removed Registers = 45 ;                                                    ;
++----------------------------------------+----------------------------------------------------+
+
+
++------------------------------------------------------------+
+; General Register Statistics for Partition "root_partition" ;
++----------------------------------------------+-------------+
+; Statistic                                    ; Value       ;
++----------------------------------------------+-------------+
+; Total registers                              ; 32          ;
+; Number of registers using Synchronous Clear  ; 11          ;
+; Number of registers using Synchronous Load   ; 1           ;
+; Number of registers using Asynchronous Clear ; 0           ;
+; Number of registers using Asynchronous Load  ; 0           ;
+; Number of registers using Clock Enable       ; 31          ;
+; Number of registers using Preset             ; 0           ;
++----------------------------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+; 128:1              ; 10 bits   ; 850 LEs       ; 410 LEs              ; 440 LEs                ; Yes        ; o2_h_synthO.o2_h_synth_mt11_o[0]~reg0  ;
+; 65:1               ; 4 bits    ; 172 LEs       ; 24 LEs               ; 148 LEs                ; Yes        ; o2_h_synthO.o2_h_synth_mt11_o[4]~reg0  ;
+; 34:1               ; 2 bits    ; 44 LEs        ; 10 LEs               ; 34 LEs                 ; Yes        ; o2_h_synthO.o2_h_synth_mt21_o[17]~reg0 ;
+; 256:1              ; 17 bits   ; 2890 LEs      ; 1700 LEs             ; 1190 LEs               ; Yes        ; o2_h_synthO.o2_h_synth_mt11_o[12]~reg0 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+
+
++------------------------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Partition "root_partition" ;
++------------------------+-----------------------------------------+
+; Type                   ; Count                                   ;
++------------------------+-----------------------------------------+
+; boundary_port          ; 88                                      ;
+; twentynm_ff            ; 32                                      ;
+;     ENA                ; 19                                      ;
+;     ENA SCLR           ; 11                                      ;
+;     ENA SLD            ; 1                                       ;
+;     plain              ; 1                                       ;
+; twentynm_lcell_comb    ; 80                                      ;
+;     extend             ; 1                                       ;
+;         7 data inputs  ; 1                                       ;
+;     normal             ; 79                                      ;
+;         0 data inputs  ; 2                                       ;
+;         2 data inputs  ; 6                                       ;
+;         3 data inputs  ; 10                                      ;
+;         4 data inputs  ; 5                                       ;
+;         5 data inputs  ; 19                                      ;
+;         6 data inputs  ; 37                                      ;
+;                        ;                                         ;
+; Number of carry chains ; 0                                       ;
+; Max carry chain length ; 0                                       ;
+;                        ;                                         ;
+; Max LUT depth          ; 3.00                                    ;
+; Average LUT depth      ; 1.70                                    ;
++------------------------+-----------------------------------------+
+
+
++----------------------------------------------------------------------------------+
+; Synthesis Resource Usage Summary for Partition "root_partition"                  ;
++---------------------------------------------+------------------------------------+
+; Resource                                    ; Usage                              ;
++---------------------------------------------+------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 60                                 ;
+;                                             ;                                    ;
+; Combinational ALUT usage for logic          ; 80                                 ;
+;     -- 7 input functions                    ; 1                                  ;
+;     -- 6 input functions                    ; 37                                 ;
+;     -- 5 input functions                    ; 19                                 ;
+;     -- 4 input functions                    ; 5                                  ;
+;     -- <=3 input functions                  ; 18                                 ;
+;                                             ;                                    ;
+; Dedicated logic registers                   ; 32                                 ;
+;                                             ;                                    ;
+; I/O pins                                    ; 88                                 ;
+;                                             ;                                    ;
+; Total DSP Blocks                            ; 0                                  ;
+;     -- [A] Total Fixed Point DSP Blocks     ; 0                                  ;
+;     -- [B] Total Floating Point DSP Blocks  ; 0                                  ;
+;                                             ;                                    ;
+; Maximum fan-out node                        ; o2_h_synthI.o2_h_synth_reg_id_i[1] ;
+; Maximum fan-out                             ; 48                                 ;
+; Total fan-out                               ; 570                                ;
+; Average fan-out                             ; 2.85                               ;
++---------------------------------------------+------------------------------------+
+
+
++--------------------+
+; Synthesis Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Synthesis
+    Info: Version 19.1.0 Build 240 03/26/2019 SJ Pro Edition
+    Info: Processing started: Wed Apr  8 01:16:04 2020
+Info: Command: quartus_syn --read_settings_files=on --write_settings_files=off o2_h_synth -c o2_h_synth
+Info: qis_default_flow_script.tcl version: #2
+Info: Initializing Synthesis...
+Info: Project = "o2_h_synth"
+Info: Revision = "o2_h_synth"
+Info: Analyzing source files
+Info: Elaborating from top-level entity "o2_h_synth"
+Info (19337): VHDL info at o2_h_synth.vhd(42): executing entity "o2_h_synth" with architecture "behaviour" File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/o2_h_synth/o2_h_synth.vhd Line: 42
+Info: Found 2 design entities
+Info: There are 1 partitions after elaboration.
+Info: Creating instance-specific data models and dissolving soft partitions
+Info (18299): Expanding entity and wildcard assignments.
+Info (18300): Expanded entity and wildcard assignments. Elapsed time: 00:00:00
+Info: found pre-synthesis snapshots for 1 partition(s)
+Info: Synthesizing partition "root_partition"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "o2_h_synthO.o2_h_synth_mt21_o[17]" is stuck at VCC File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/o2_h_synth/o2_h_synth.vhd Line: 51
+    Warning (13410): Pin "o2_h_synthO.o2_h_synth_mt21_o[18]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/o2_h_synth/o2_h_synth.vhd Line: 51
+    Warning (13410): Pin "o2_h_synthO.o2_h_synth_mt12_o[18]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/o2_h_synth/o2_h_synth.vhd Line: 51
+    Warning (13410): Pin "o2_h_synthO.o2_h_synth_mt11_o[17]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/o2_h_synth/o2_h_synth.vhd Line: 51
+    Warning (13410): Pin "o2_h_synthO.o2_h_synth_mt11_o[18]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/o2_h_synth/o2_h_synth.vhd Line: 51
+Info (286030): Timing-Driven Synthesis is running
+Info (21057): Implemented 179 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 11 input pins
+    Info (21059): Implemented 77 output pins
+    Info (21061): Implemented 91 logic cells
+Info: Successfully synthesized partition
+Info: Saving post-synthesis snapshots for 1 partition(s)
+Info: Quartus Prime Synthesis was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 5266 megabytes
+    Info: Processing ended: Wed Apr  8 01:16:08 2020
+    Info: Elapsed time: 00:00:04
+
+

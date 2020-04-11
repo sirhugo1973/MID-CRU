@@ -1,0 +1,761 @@
+Synthesis report
+Wed Apr  8 01:23:41 2020
+Quartus Prime Version 19.1.0 Build 240 03/26/2019 SJ Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Synthesis Summary
+  2. Synthesis Settings
+  3. Parallel Compilation
+  4. Synthesis Source Files Read
+  5. Synthesis Partition Summary
+  6. Partition "root_partition" Resource Utilization by Entity
+  7. Registers Removed During Synthesis
+  8. Removed Registers Triggering Further Register Optimizations
+  9. General Register Statistics for Partition "root_partition"
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Post-Synthesis Netlist Statistics for Partition "root_partition"
+ 13. Synthesis Resource Usage Summary for Partition "root_partition"
+ 14. Synthesis Messages
+
+
+
++---------------------------------------------------------------+
+; Synthesis Summary                                             ;
++-----------------------+---------------------------------------+
+; Synthesis Status      ; Successful - Wed Apr  8 01:23:41 2020 ;
+; Revision Name         ; loc_rfmt                              ;
+; Top-level Entity Name ; loc_rfmt                              ;
+; Family                ; Cyclone 10 GX                         ;
++-----------------------+---------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Synthesis Settings                                                                                                        ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 10CX085YF672E5G    ;                    ;
+; Top-level entity name                                                           ; loc_rfmt           ; loc_rfmt           ;
+; Family name                                                                     ; Cyclone 10 GX      ; Cyclone 10 GX      ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Enable Design Assistant in the compilation flow                                 ; Off                ; Off                ;
+; Design Assistant include IP blocks                                              ; Off                ; Off                ;
+; Design Assistant limit on reported violations per rule                          ; 500                ; 500                ;
+; Optimization Mode                                                               ; Balanced           ; Balanced           ;
+; Allow Register Merging                                                          ; On                 ; On                 ;
+; Allow Register Duplication                                                      ; On                 ; On                 ;
+; Allow Register Retiming                                                         ; On                 ; On                 ;
+; Allow RAM Retiming                                                              ; Off                ; Off                ;
+; Allow DSP Retiming                                                              ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Auto               ; Auto               ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Number of Protected Registers Reported in Synthesis Report                      ; 100                ; 100                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
+; Disable DSP Negate Inferencing                                                  ; Off                ; Off                ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Size of the Latch Report                                                        ; 100                ; 100                ;
+; Enable State Machines Inference                                                 ; On                 ; On                 ;
+; Enable formal verification support during compilation                           ; Off                ; Off                ;
+; Size of the PR Initial Conditions Report                                        ; 15                 ; 15                 ;
+; Report PR Initial Values as Errors                                              ; Off                ; Off                ;
+; Fractal Synthesis                                                               ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 2      ;
+; Maximum used               ; 2      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Synthesis Source Files Read                                                                                                                                                                             ;
++---------------------------------------+-----------------+--------------------------------------------------------------------------------------------------+---------+----------------------------------+
+; File Name with User-Entered Path      ; File Type       ; File Name with Absolute Path                                                                     ; Library ; MD5                              ;
++---------------------------------------+-----------------+--------------------------------------------------------------------------------------------------+---------+----------------------------------+
+; o2_h_synth/o2_h_synth.vhd             ; User VHDL File  ; C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/o2_h_synth/o2_h_synth.vhd ;         ; 0d60359e1653e5bf8f73aad05a349d65 ;
+; ../../../../packages/var_defs_pkg.vhd ; User VHDL File  ; C:/Users/natha/Desktop/mid_cru_proto/packages/var_defs_pkg.vhd                                   ;         ; a500810695c98b8392cca0a75e4f8863 ;
+; ../../../../packages/util_pkg.vhd     ; User VHDL File  ; C:/Users/natha/Desktop/mid_cru_proto/packages/util_pkg.vhd                                       ;         ; b891324ced6ce7a69387b319e1a090d0 ;
+; ../../../../packages/sig_defs_pkg.vhd ; User VHDL File  ; C:/Users/natha/Desktop/mid_cru_proto/packages/sig_defs_pkg.vhd                                   ;         ; 5499a31b5af9bca851caed62aff693c9 ;
+; loc_rfmt_tb.vhd                       ; User VHDL File  ; C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt_tb.vhd           ;         ; 93c889d135f943c99f2ee118541d3537 ;
+; loc_rfmt.vhd                          ; User VHDL File  ; C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd              ;         ; 26c240cbb882d29b41534ba239194f4b ;
++---------------------------------------+-----------------+--------------------------------------------------------------------------------------------------+---------+----------------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Synthesis Partition Summary                                                                ;
++----------------+----------------+---------+--------------+-------+-------------------------+
+; Partition Name ; Hierarchy Path ; Type    ; Preservation ; Empty ; Partition Database File ;
++----------------+----------------+---------+--------------+-------+-------------------------+
+; root_partition ; |              ; Default ;              ;       ;                         ;
++----------------+----------------+---------+--------------+-------+-------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition "root_partition" Resource Utilization by Entity                                                                                                                                       ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; IOPLLs ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------+---------------------+-------------+--------------+
+; |                          ; 43 (43)             ; 254 (254)                 ; 0                 ; 0          ; 0    ; 0            ; 0 (0)  ; |                   ; loc_rfmt    ; altera_work  ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                        ;
++------------------------------------------------------------+--------------------------------------------------------------+
+; Register name                                              ; Reason for Removal                                           ;
++------------------------------------------------------------+--------------------------------------------------------------+
+; loc_rfmtO.loc_rfmt_mt12_data_o[32]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[32]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[32]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[32]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[32]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[32]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[33]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[33]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[33]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[33]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[33]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[33]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[34]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[34]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[34]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[34]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[34]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[34]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[35]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[35]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[35]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[35]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[35]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[35]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[36]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[36]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[36]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[36]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[36]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[36]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[37]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[37]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[37]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[37]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[37]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[37]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[40]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[40]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[40]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[40]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[40]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[40]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[44]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[44]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[44]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[44]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[45]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt12_data_o[45]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[49]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt22_data_o[48]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[52]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[53]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[54]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[55]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[56]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[57]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[58]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[59]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[60]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[61]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[62]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[63]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[51]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[52]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[53]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[54]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[55]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[56]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[57]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[58]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[59]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[60]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[61]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[62]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[63]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[51]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[52]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[53]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[54]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[55]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[56]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[57]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[58]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[59]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[60]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[61]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[62]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[63]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[51]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[52]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[53]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[54]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[55]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[56]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[57]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[58]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[59]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[60]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[61]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[62]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[63]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[50]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[49]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[50]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[49]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[50]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[49]~reg0          ;
+; v_loc.o2_h_mt12[0]                                         ; Merged with v_loc.o2_h_mt11[0]                               ;
+; v_loc.o2_h_mt21[0]                                         ; Merged with v_loc.o2_h_mt11[0]                               ;
+; v_loc.o2_h_mt22[0]                                         ; Merged with v_loc.o2_h_mt11[0]                               ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[0]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[0]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[0]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[0]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[0]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[0]  ;
+; v_loc.o2_h_mt12[1]                                         ; Merged with v_loc.o2_h_mt11[1]                               ;
+; v_loc.o2_h_mt21[1]                                         ; Merged with v_loc.o2_h_mt11[1]                               ;
+; v_loc.o2_h_mt22[1]                                         ; Merged with v_loc.o2_h_mt11[1]                               ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[1]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[1]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[1]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[1]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[1]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[1]  ;
+; v_loc.o2_h_mt12[2]                                         ; Merged with v_loc.o2_h_mt11[2]                               ;
+; v_loc.o2_h_mt21[2]                                         ; Merged with v_loc.o2_h_mt11[2]                               ;
+; v_loc.o2_h_mt22[2]                                         ; Merged with v_loc.o2_h_mt11[2]                               ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[2]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[2]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[2]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[2]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[2]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[2]  ;
+; v_loc.o2_h_mt12[3]                                         ; Merged with v_loc.o2_h_mt11[3]                               ;
+; v_loc.o2_h_mt21[3]                                         ; Merged with v_loc.o2_h_mt11[3]                               ;
+; v_loc.o2_h_mt22[3]                                         ; Merged with v_loc.o2_h_mt11[3]                               ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[3]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[3]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[3]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[3]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[3]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[3]  ;
+; v_loc.o2_h_mt12[4]                                         ; Merged with v_loc.o2_h_mt11[4]                               ;
+; v_loc.o2_h_mt21[4]                                         ; Merged with v_loc.o2_h_mt11[4]                               ;
+; v_loc.o2_h_mt22[4]                                         ; Merged with v_loc.o2_h_mt11[4]                               ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[4]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[4]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[4]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[4]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[4]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[4]  ;
+; v_loc.o2_h_mt12[5]                                         ; Merged with v_loc.o2_h_mt11[5]                               ;
+; v_loc.o2_h_mt21[5]                                         ; Merged with v_loc.o2_h_mt11[5]                               ;
+; v_loc.o2_h_mt22[5]                                         ; Merged with v_loc.o2_h_mt11[5]                               ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[5]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[5]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[5]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[5]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[5]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[5]  ;
+; v_loc.o2_h_mt12[8]                                         ; Merged with v_loc.o2_h_mt11[8]                               ;
+; v_loc.o2_h_mt21[8]                                         ; Merged with v_loc.o2_h_mt11[8]                               ;
+; v_loc.o2_h_mt22[8]                                         ; Merged with v_loc.o2_h_mt11[8]                               ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[8]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[8]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[8]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[8]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[8]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[8]  ;
+; v_loc.o2_h_mt12[12]                                        ; Merged with v_loc.o2_h_mt11[12]                              ;
+; v_loc.o2_h_mt22[12]                                        ; Merged with v_loc.o2_h_mt11[12]                              ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[12]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[12] ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[12]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[12] ;
+; v_loc.o2_h_mt22[13]                                        ; Merged with v_loc.o2_h_mt12[13]                              ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[13]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[13] ;
+; v_loc.o2_h_mt22[17]                                        ; Merged with v_loc.o2_h_mt22[16]                              ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[17]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[16] ;
+; v_loc.o2_h_mt11[18]                                        ; Merged with v_loc.o2_h_mt11[17]                              ;
+; v_loc.o2_h_mt12[18]                                        ; Merged with v_loc.o2_h_mt11[17]                              ;
+; v_loc.o2_h_mt21[18]                                        ; Merged with v_loc.o2_h_mt11[17]                              ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[18]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[17] ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[18]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[17] ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[18]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[17] ;
+; s_loc_rfmt_i.o2_h_synth_reg_id_i[2]                        ; Merged with s_loc_rfmt_i.o2_h_synth_loc_id_i[2]              ;
+; s_loc_rfmt_i.o2_h_synth_reg_id_i[1]                        ; Merged with s_loc_rfmt_i.o2_h_synth_loc_id_i[1]              ;
+; s_loc_rfmt_i.o2_h_synth_reg_id_i[0]                        ; Merged with s_loc_rfmt_i.o2_h_synth_loc_id_i[0]              ;
+; s_loc_rfmt_i.o2_h_synth_reg_id_i[3]                        ; Merged with s_loc_rfmt_i.o2_h_synth_loc_id_i[3]              ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[6]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[6]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[6]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[6]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[6]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[6]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[7]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[7]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[7]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[7]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[7]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[7]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[9]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[9]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[9]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[9]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[9]            ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[9]  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[10]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[10] ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[10]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[10] ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[10]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[10] ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[11]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[11] ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[11]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[11] ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[11]           ; Merged with cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[11] ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[38]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[38]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[38]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[38]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[38]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[38]~reg0          ;
+; v_loc.o2_h_mt12[6]                                         ; Merged with v_loc.o2_h_mt11[6]                               ;
+; v_loc.o2_h_mt21[6]                                         ; Merged with v_loc.o2_h_mt11[6]                               ;
+; v_loc.o2_h_mt22[6]                                         ; Merged with v_loc.o2_h_mt11[6]                               ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[39]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[39]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[39]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[39]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[39]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[39]~reg0          ;
+; v_loc.o2_h_mt12[7]                                         ; Merged with v_loc.o2_h_mt11[7]                               ;
+; v_loc.o2_h_mt21[7]                                         ; Merged with v_loc.o2_h_mt11[7]                               ;
+; v_loc.o2_h_mt22[7]                                         ; Merged with v_loc.o2_h_mt11[7]                               ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[41]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[41]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[41]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[41]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[41]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[41]~reg0          ;
+; v_loc.o2_h_mt12[9]                                         ; Merged with v_loc.o2_h_mt11[9]                               ;
+; v_loc.o2_h_mt21[9]                                         ; Merged with v_loc.o2_h_mt11[9]                               ;
+; v_loc.o2_h_mt22[9]                                         ; Merged with v_loc.o2_h_mt11[9]                               ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[42]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[42]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[42]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[42]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[42]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[42]~reg0          ;
+; v_loc.o2_h_mt12[10]                                        ; Merged with v_loc.o2_h_mt11[10]                              ;
+; v_loc.o2_h_mt21[10]                                        ; Merged with v_loc.o2_h_mt11[10]                              ;
+; v_loc.o2_h_mt22[10]                                        ; Merged with v_loc.o2_h_mt11[10]                              ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[43]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[43]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[43]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[43]~reg0          ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[43]~reg0                    ; Merged with loc_rfmtO.loc_rfmt_mt11_data_o[43]~reg0          ;
+; v_loc.o2_h_mt12[11]                                        ; Merged with v_loc.o2_h_mt11[11]                              ;
+; v_loc.o2_h_mt21[11]                                        ; Merged with v_loc.o2_h_mt11[11]                              ;
+; v_loc.o2_h_mt22[11]                                        ; Merged with v_loc.o2_h_mt11[11]                              ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[51]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[17]           ; Stuck at VCC due to stuck port data_in                       ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[3,17]         ; Stuck at GND due to stuck port data_in                       ;
+; v_loc.o2_h_mt11[3,17]                                      ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[35]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[49]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; v_loc.o2_h_mt21[17]                                        ; Stuck at VCC due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[49]~reg0                    ; Stuck at VCC due to stuck port data_in                       ;
+; s_loc_rfmt_i.o2_h_synth_valid_i                            ; Stuck at GND due to stuck port data_in                       ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[2,4,5,10]     ; Stuck at GND due to stuck port clock                         ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[13]           ; Stuck at GND due to stuck port clock                         ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[14..16,18]    ; Stuck at GND due to stuck port clock                         ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[13,14,16]     ; Stuck at GND due to stuck port clock                         ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[14,16,17]     ; Stuck at GND due to stuck port clock                         ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[13..16]       ; Stuck at GND due to stuck port clock                         ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[0]            ; Stuck at GND due to stuck port clock_enable                  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_valid_o              ; Stuck at GND due to stuck port data_in                       ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[1,6..9,11,12] ; Stuck at GND due to stuck port clock_enable                  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[12,15]        ; Stuck at GND due to stuck port clock_enable                  ;
+; s_loc_rfmt_i.o2_h_synth_loc_id_i[0..2]                     ; Lost fanout                                                  ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[15]           ; Stuck at GND due to stuck port clock_enable                  ;
+; s_loc_rfmt_i.o2_h_synth_loc_id_i[3]                        ; Lost fanout                                                  ;
+; v_loc.o2_h_mt11[0..2,4..12]                                ; Stuck at GND due to stuck port data_in                       ;
+; v_loc.o2_h_mt12[13]                                        ; Stuck at GND due to stuck port data_in                       ;
+; v_loc.o2_h_mt22[14..16,18]                                 ; Stuck at GND due to stuck port data_in                       ;
+; v_loc.o2_h_mt21[12..16]                                    ; Stuck at GND due to stuck port data_in                       ;
+; v_loc.o2_h_mt12[14..17]                                    ; Stuck at GND due to stuck port data_in                       ;
+; v_loc.o2_h_mt11[13..16]                                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[32]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[33]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[34]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[36]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[37]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[38]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[39]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[40]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[41]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[42]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[43]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[44]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[45]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[46]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[47]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[48]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt22_data_o[50]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[44]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[45]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[46]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[47]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt21_data_o[48]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[46]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[47]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[48]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt12_data_o[49]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[45]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[46]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[47]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; loc_rfmtO.loc_rfmt_mt11_data_o[48]~reg0                    ; Stuck at GND due to stuck port data_in                       ;
+; Total Number of Removed Registers = 290                    ;                                                              ;
++------------------------------------------------------------+--------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                        ;
++--------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; Register name                                    ; Reason for Removal        ; Registers Removed due to This Register                                              ;
++--------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; s_loc_rfmt_i.o2_h_synth_valid_i                  ; Stuck at GND              ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[2],                                    ;
+;                                                  ; due to stuck port data_in ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[4],                                    ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[5],                                    ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[10],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[13],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[14],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[15],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[16],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt22_o[18],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[13],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[14],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[16],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[14],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[16],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[17],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[13],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[14],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[15],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[16],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[0],                                    ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_valid_o,                                      ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[1],                                    ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[6],                                    ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[7],                                    ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[8],                                    ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[9],                                    ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[11],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[12],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[12],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[15],                                   ;
+;                                                  ;                           ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[15], v_loc.o2_h_mt11[0],               ;
+;                                                  ;                           ; v_loc.o2_h_mt11[1], v_loc.o2_h_mt11[2], v_loc.o2_h_mt11[4], v_loc.o2_h_mt11[5],     ;
+;                                                  ;                           ; v_loc.o2_h_mt11[6], v_loc.o2_h_mt11[7], v_loc.o2_h_mt11[8], v_loc.o2_h_mt11[9],     ;
+;                                                  ;                           ; v_loc.o2_h_mt11[10], v_loc.o2_h_mt11[11], v_loc.o2_h_mt11[12], v_loc.o2_h_mt12[13], ;
+;                                                  ;                           ; v_loc.o2_h_mt22[14], v_loc.o2_h_mt22[15], v_loc.o2_h_mt22[16], v_loc.o2_h_mt22[18], ;
+;                                                  ;                           ; v_loc.o2_h_mt21[12], v_loc.o2_h_mt21[13], v_loc.o2_h_mt21[14], v_loc.o2_h_mt21[15], ;
+;                                                  ;                           ; v_loc.o2_h_mt21[16], v_loc.o2_h_mt12[14], v_loc.o2_h_mt12[15], v_loc.o2_h_mt12[16], ;
+;                                                  ;                           ; v_loc.o2_h_mt12[17], v_loc.o2_h_mt11[13], v_loc.o2_h_mt11[14], v_loc.o2_h_mt11[15], ;
+;                                                  ;                           ; v_loc.o2_h_mt11[16], loc_rfmtO.loc_rfmt_mt11_data_o[32]~reg0,                       ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt11_data_o[33]~reg0, loc_rfmtO.loc_rfmt_mt11_data_o[34]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt11_data_o[36]~reg0, loc_rfmtO.loc_rfmt_mt11_data_o[37]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt11_data_o[38]~reg0, loc_rfmtO.loc_rfmt_mt11_data_o[39]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt11_data_o[40]~reg0, loc_rfmtO.loc_rfmt_mt11_data_o[41]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt11_data_o[42]~reg0, loc_rfmtO.loc_rfmt_mt11_data_o[43]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt11_data_o[44]~reg0, loc_rfmtO.loc_rfmt_mt12_data_o[45]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt22_data_o[46]~reg0, loc_rfmtO.loc_rfmt_mt22_data_o[47]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt22_data_o[48]~reg0, loc_rfmtO.loc_rfmt_mt22_data_o[50]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt21_data_o[44]~reg0, loc_rfmtO.loc_rfmt_mt21_data_o[45]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt21_data_o[46]~reg0, loc_rfmtO.loc_rfmt_mt21_data_o[47]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt21_data_o[48]~reg0, loc_rfmtO.loc_rfmt_mt12_data_o[46]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt12_data_o[47]~reg0, loc_rfmtO.loc_rfmt_mt12_data_o[48]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt12_data_o[49]~reg0, loc_rfmtO.loc_rfmt_mt11_data_o[45]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt11_data_o[46]~reg0, loc_rfmtO.loc_rfmt_mt11_data_o[47]~reg0,   ;
+;                                                  ;                           ; loc_rfmtO.loc_rfmt_mt11_data_o[48]~reg0                                             ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt21_o[17] ; Stuck at VCC              ; v_loc.o2_h_mt21[17], loc_rfmtO.loc_rfmt_mt21_data_o[49]~reg0,                       ;
+;                                                  ; due to stuck port data_in ; s_loc_rfmt_i.o2_h_synth_loc_id_i[0], s_loc_rfmt_i.o2_h_synth_loc_id_i[1],           ;
+;                                                  ;                           ; s_loc_rfmt_i.o2_h_synth_loc_id_i[2], s_loc_rfmt_i.o2_h_synth_loc_id_i[3]            ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[3]  ; Stuck at GND              ; v_loc.o2_h_mt11[3], loc_rfmtO.loc_rfmt_mt11_data_o[35]~reg0                         ;
+;                                                  ; due to stuck port data_in ;                                                                                     ;
+; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[17] ; Stuck at GND              ; v_loc.o2_h_mt11[17], loc_rfmtO.loc_rfmt_mt11_data_o[49]~reg0                        ;
+;                                                  ; due to stuck port data_in ;                                                                                     ;
++--------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------+
+; General Register Statistics for Partition "root_partition" ;
++----------------------------------------------+-------------+
+; Statistic                                    ; Value       ;
++----------------------------------------------+-------------+
+; Total registers                              ; 254         ;
+; Number of registers using Synchronous Clear  ; 0           ;
+; Number of registers using Synchronous Load   ; 120         ;
+; Number of registers using Asynchronous Clear ; 0           ;
+; Number of registers using Asynchronous Load  ; 0           ;
+; Number of registers using Clock Enable       ; 248         ;
+; Number of registers using Preset             ; 0           ;
++----------------------------------------------+-------------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; v_byte_count[0]                        ; 29      ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; 16:1               ; 21 bits   ; 210 LEs       ; 210 LEs              ; 0 LEs                  ; Yes        ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt12_o[13] ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[10] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; cmp_o2_h_synth|o2_h_synthO.o2_h_synth_mt11_o[4]  ;
+; 33:1               ; 8 bits    ; 176 LEs       ; 32 LEs               ; 144 LEs                ; Yes        ; v_loc.mt21_sp[1]                                 ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 32 LEs               ; 144 LEs                ; Yes        ; v_loc.mt21_sp[28]                                ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 32 LEs               ; 144 LEs                ; Yes        ; v_loc.mt21_sp[21]                                ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 32 LEs               ; 144 LEs                ; Yes        ; v_loc.mt21_sp[10]                                ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 32 LEs               ; 144 LEs                ; Yes        ; v_loc.mt22_sp[14]                                ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 32 LEs               ; 144 LEs                ; Yes        ; v_loc.mt22_sp[0]                                 ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 16 LEs               ; 160 LEs                ; Yes        ; v_loc.mt11_sp[27]                                ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 16 LEs               ; 160 LEs                ; Yes        ; v_loc.mt11_sp[22]                                ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 16 LEs               ; 160 LEs                ; Yes        ; v_loc.mt11_sp[8]                                 ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 24 LEs               ; 152 LEs                ; Yes        ; v_loc.mt12_sp[29]                                ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 24 LEs               ; 152 LEs                ; Yes        ; v_loc.mt12_sp[20]                                ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 24 LEs               ; 152 LEs                ; Yes        ; v_loc.mt12_sp[11]                                ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 24 LEs               ; 152 LEs                ; Yes        ; v_loc.mt12_sp[7]                                 ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 32 LEs               ; 144 LEs                ; Yes        ; v_loc.mt22_sp[26]                                ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 32 LEs               ; 144 LEs                ; Yes        ; v_loc.mt22_sp[17]                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+
+
++------------------------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Partition "root_partition" ;
++------------------------+-----------------------------------------+
+; Type                   ; Count                                   ;
++------------------------+-----------------------------------------+
+; boundary_port          ; 277                                     ;
+; twentynm_ff            ; 254                                     ;
+;     ENA                ; 128                                     ;
+;     ENA SLD            ; 120                                     ;
+;     plain              ; 6                                       ;
+; twentynm_lcell_comb    ; 43                                      ;
+;     extend             ; 2                                       ;
+;         7 data inputs  ; 2                                       ;
+;     normal             ; 41                                      ;
+;         0 data inputs  ; 2                                       ;
+;         2 data inputs  ; 3                                       ;
+;         3 data inputs  ; 5                                       ;
+;         4 data inputs  ; 7                                       ;
+;         5 data inputs  ; 9                                       ;
+;         6 data inputs  ; 15                                      ;
+;                        ;                                         ;
+; Number of carry chains ; 0                                       ;
+; Max carry chain length ; 0                                       ;
+;                        ;                                         ;
+; Max LUT depth          ; 3.00                                    ;
+; Average LUT depth      ; 0.47                                    ;
++------------------------+-----------------------------------------+
+
+
++-----------------------------------------------------------------+
+; Synthesis Resource Usage Summary for Partition "root_partition" ;
++---------------------------------------------+-------------------+
+; Resource                                    ; Usage             ;
++---------------------------------------------+-------------------+
+; Estimate of Logic utilization (ALMs needed) ; 141               ;
+;                                             ;                   ;
+; Combinational ALUT usage for logic          ; 43                ;
+;     -- 7 input functions                    ; 2                 ;
+;     -- 6 input functions                    ; 15                ;
+;     -- 5 input functions                    ; 9                 ;
+;     -- 4 input functions                    ; 7                 ;
+;     -- <=3 input functions                  ; 10                ;
+;                                             ;                   ;
+; Dedicated logic registers                   ; 254               ;
+;                                             ;                   ;
+; I/O pins                                    ; 277               ;
+;                                             ;                   ;
+; Total DSP Blocks                            ; 0                 ;
+;     -- [A] Total Fixed Point DSP Blocks     ; 0                 ;
+;     -- [B] Total Floating Point DSP Blocks  ; 0                 ;
+;                                             ;                   ;
+; Maximum fan-out node                        ; clk_i             ;
+; Maximum fan-out                             ; 254               ;
+; Total fan-out                               ; 1391              ;
+; Average fan-out                             ; 2.42              ;
++---------------------------------------------+-------------------+
+
+
++--------------------+
+; Synthesis Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Synthesis
+    Info: Version 19.1.0 Build 240 03/26/2019 SJ Pro Edition
+    Info: Processing started: Wed Apr  8 01:23:38 2020
+Info: Command: quartus_syn --read_settings_files=on --write_settings_files=off loc_rfmt -c loc_rfmt
+Info: qis_default_flow_script.tcl version: #2
+Info: Initializing Synthesis...
+Info: Project = "loc_rfmt"
+Info: Revision = "loc_rfmt"
+Info: Analyzing source files
+Info: Elaborating from top-level entity "loc_rfmt"
+Info (19337): VHDL info at loc_rfmt.vhd(42): executing entity "loc_rfmt" with architecture "behaviour" File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 42
+Info (19337): VHDL info at o2_h_synth.vhd(42): executing entity "o2_h_synth" with architecture "behaviour" File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/o2_h_synth/o2_h_synth.vhd Line: 42
+Info: Found 3 design entities
+Info: There are 2 partitions after elaboration.
+Info: Creating instance-specific data models and dissolving soft partitions
+Info (18299): Expanding entity and wildcard assignments.
+Info (18300): Expanded entity and wildcard assignments. Elapsed time: 00:00:00
+Info: found pre-synthesis snapshots for 1 partition(s)
+Info: Synthesizing partition "root_partition"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[32]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[33]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[34]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[35]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[36]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[37]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[38]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[39]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[40]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[41]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[42]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[43]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[44]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[45]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[46]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[47]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[48]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[49]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[50]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[51]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[52]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[53]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[54]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[55]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[56]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[57]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[58]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[59]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[60]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[61]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[62]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt22_data_o[63]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[32]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[33]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[34]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[35]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[36]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[37]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[38]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[39]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[40]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[41]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[42]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[43]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[44]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[45]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[46]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[47]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[48]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[49]" is stuck at VCC File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[50]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[51]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[52]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[53]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[54]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[55]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[56]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[57]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[58]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[59]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[60]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[61]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[62]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt21_data_o[63]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[32]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[33]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[34]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[35]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[36]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[37]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[38]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[39]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[40]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[41]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[42]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[43]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[44]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[45]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[46]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[47]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[48]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[49]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[50]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[51]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[52]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[53]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[54]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[55]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[56]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[57]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[58]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[59]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[60]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[61]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[62]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt12_data_o[63]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[32]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[33]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[34]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[35]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[36]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[37]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[38]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[39]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[40]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[41]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[42]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[43]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[44]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[45]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[46]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[47]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[48]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[49]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[50]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[51]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[52]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[53]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[54]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[55]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[56]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[57]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[58]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[59]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[60]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[61]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[62]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+    Warning (13410): Pin "loc_rfmtO.loc_rfmt_mt11_data_o[63]" is stuck at GND File: C:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_rfmt/loc_rfmt/loc_rfmt.vhd Line: 51
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 4 registers lost all their fanouts during netlist optimizations.
+Info (21057): Implemented 569 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 20 input pins
+    Info (21059): Implemented 257 output pins
+    Info (21061): Implemented 292 logic cells
+Info: Successfully synthesized partition
+Info: Saving post-synthesis snapshots for 1 partition(s)
+Info: Quartus Prime Synthesis was successful. 0 errors, 129 warnings
+    Info: Peak virtual memory: 5273 megabytes
+    Info: Processing ended: Wed Apr  8 01:23:41 2020
+    Info: Elapsed time: 00:00:03
+
+

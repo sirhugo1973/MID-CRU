@@ -1,0 +1,18 @@
+# system info ram_s3 on 2020.04.08.22:27:26
+system_info:
+name,value
+DEVICE,10CX220YU484I6G
+DEVICE_FAMILY,Cyclone 10 GX
+GENERATION_ID,0
+#
+#
+# Files generated for ram_s3 on 2020.04.08.22:27:26
+files:
+filepath,kind,attributes,module,is_top
+sim/ram_s3.vhd,VHDL,CONTAINS_INLINE_CONFIGURATION,ram_s3,true
+ram_1port_191/sim/ram_s3_ram_1port_191_ef7qrwa.vhd,VHDL,,ram_s3_ram_1port_191_ef7qrwa,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+ram_s3.ram_1port_0,ram_s3_ram_1port_191_ef7qrwa

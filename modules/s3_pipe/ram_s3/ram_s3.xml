@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2020.04.08.17:51:36"
+ outputDirectory="C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/ram_s3/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Cyclone 10 GX"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="10CX085YF672E5G"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="5"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="data" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="data" direction="input" role="datain" width="64" />
+  </interface>
+  <interface name="q" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="q" direction="output" role="dataout" width="64" />
+  </interface>
+  <interface name="address" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="address" direction="input" role="address" width="8" />
+  </interface>
+  <interface name="wren" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="wren" direction="input" role="wren" width="1" />
+  </interface>
+  <interface name="clock" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="clock" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="rden" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="rden" direction="input" role="rden" width="1" />
+  </interface>
+ </perimeter>
+ <entity kind="ram_s3" version="1.0" name="ram_s3">
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE" value="10CX085YF672E5G" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="5" />
+  <generatedFiles>
+   <file
+       path="C:\Users\natha\Desktop\mid_cru_proto\modules\s3_pipe\ram_s3\synth\ram_s3.vhd"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="C:\Users\natha\Desktop\mid_cru_proto\modules\s3_pipe\ram_s3\synth\ram_s3.vhd"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file path="C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/ram_s3.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="C:/intelfpga_pro/19.1/ip/altera/megafunctions/ram_1port/ram_1_port_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="ram_s3">"Generating: ram_s3"</message>
+   <message level="Info" culprit="ram_s3">"Generating: ram_s3_ram_1port_191_ef7qrwa"</message>
+  </messages>
+ </entity>
+ <entity kind="ram_1port" version="19.1" name="ram_s3_ram_1port_191_ef7qrwa">
+  <parameter name="GUI_CLOCK_ENABLE_INPUT_A" value="false" />
+  <parameter name="GUI_AclrData" value="false" />
+  <parameter name="GUI_NUMWORDS_A" value="256" />
+  <parameter name="DEVICE_FAMILY" value="Cyclone 10 GX" />
+  <parameter name="GUI_RAM_BLOCK_TYPE" value="Auto" />
+  <parameter name="GUI_SingleClock" value="0" />
+  <parameter name="GUI_AclrAddr" value="false" />
+  <parameter name="GUI_INIT_FILE_LAYOUT" value="PORT_A" />
+  <parameter name="GUI_IMPLEMENT_IN_LES" value="0" />
+  <parameter name="GUI_X_MASK" value="false" />
+  <parameter name="GUI_MAXIMUM_DEPTH" value="0" />
+  <parameter name="GUI_RegOutput" value="true" />
+  <parameter name="GUI_READ_DURING_WRITE_MODE_PORT_A" value="0" />
+  <parameter name="GUI_CLOCK_ENABLE_OUTPUT_A" value="false" />
+  <parameter name="GUI_BYTE_SIZE" value="8" />
+  <parameter name="GUI_RESOURCE_USAGE" value="1 M20K" />
+  <parameter name="GUI_rden" value="true" />
+  <parameter name="GUI_JTAG_ID" value="NONE" />
+  <parameter name="GUI_WIDTH_A" value="64" />
+  <parameter name="GUI_RegData" value="true" />
+  <parameter name="GUI_FORCE_TO_ZERO" value="false" />
+  <parameter name="GUI_PR" value="false" />
+  <parameter name="GUI_MIFfilename" value="" />
+  <parameter name="GUI_Clken" value="false" />
+  <parameter name="GUI_AclrByte" value="false" />
+  <parameter name="GUI_RegAddr" value="true" />
+  <parameter name="GUI_JTAG_ENABLED" value="false" />
+  <parameter name="GUI_INIT_TO_SIM_X" value="false" />
+  <parameter name="GUI_BYTE_WIDTH" value="8" />
+  <parameter name="GUI_WRCONTROL_ACLR_A" value="false" />
+  <parameter name="GUI_AclrOutput" value="false" />
+  <parameter name="GUI_WIDTHAD_A" value="8" />
+  <parameter name="GUI_ADDRESSSTALL_A" value="false" />
+  <parameter name="GUI_FILE_REFERENCE" value="0" />
+  <parameter name="GUI_BYTE_ENABLE" value="false" />
+  <parameter name="GUI_TBENCH" value="false" />
+  <parameter name="GUI_SclrOutput" value="false" />
+  <parameter name="GUI_MODULE_NAME" value="altera_syncram" />
+  <parameter name="GUI_BlankMemory" value="0" />
+  <generatedFiles>
+   <file
+       path="C:\Users\natha\Desktop\mid_cru_proto\modules\s3_pipe\ram_s3\ram_1port_191\synth\ram_s3_ram_1port_191_ef7qrwa.v"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="C:\Users\natha\Desktop\mid_cru_proto\modules\s3_pipe\ram_s3\ram_1port_191\synth\ram_s3_ram_1port_191_ef7qrwa.v"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="C:/intelfpga_pro/19.1/ip/altera/megafunctions/ram_1port/ram_1_port_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="ram_s3" as="ram_1port_0" />
+  <messages>
+   <message level="Info" culprit="ram_s3">"Generating: ram_s3_ram_1port_191_ef7qrwa"</message>
+  </messages>
+ </entity>
+</deploy>

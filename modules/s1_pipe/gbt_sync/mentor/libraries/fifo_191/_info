@@ -1,0 +1,50 @@
+m255
+K4
+z2
+!s11e MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/natha/Desktop/mid_cru_proto/modules/s1_pipe/gbt_sync/mentor
+Efifo_fifo_191_nveaihq
+Z1 w1586366630
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+R0
+Z4 8../gbt_sub_sync/fifo/fifo_191/sim/fifo_fifo_191_nveaihq.vhd
+Z5 F../gbt_sub_sync/fifo/fifo_191/sim/fifo_fifo_191_nveaihq.vhd
+l0
+L22
+VMzLKAR<m21RD8LWKTl1H61
+!s100 `aA9I;0ZE1zgdXBiM=B3R2
+Z6 OV;C;2019.2;69
+32
+Z7 !s110 1586381190
+!i10b 1
+Z8 !s108 1586381190.000000
+Z9 !s90 -reportprogress|300|../gbt_sub_sync/fifo/fifo_191/sim/fifo_fifo_191_nveaihq.vhd|-work|fifo_191|
+Z10 !s107 ../gbt_sub_sync/fifo/fifo_191/sim/fifo_fifo_191_nveaihq.vhd|
+!i113 1
+Z11 o-work fifo_191
+Z12 tExplicit 1 CvgOpt 0
+Asyn
+R2
+R3
+Z13 DEx4 work 21 fifo_fifo_191_nveaihq 0 22 MzLKAR<m21RD8LWKTl1H61
+l69
+L36
+Z14 VT`K4O?S_ziO95C3:bLS6D3
+Z15 !s100 YDe`3EDPEna4oPg^gWOdS2
+R6
+32
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
+R12

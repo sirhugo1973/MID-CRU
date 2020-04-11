@@ -1,0 +1,223 @@
+-------------------------------------------------------------------------------
+-- --
+-- University of Cape Town, Electrical Engineering Department--
+-- --
+-------------------------------------------------------------------------------
+--
+-- unit name: gbt_mod testbench (gbt_mod_tb.vhd))
+--
+-- author: Nathan Boyles (nathan.boyles@cern.ch)
+--
+-- date: $Date: 26/02/2019: $:
+--
+-- version: $Rev: 0.1: $:
+--
+-- description: <file content, behaviour, purpose, special usage notes...>
+-- <further description>
+--
+-- dependencies: o2_h_syn.vhd sig_defs_pkg.vhd
+--
+-- references: <reference one>
+-- <reference two> ...
+--
+-- modified by: $Author:: $:
+--
+-------------------------------------------------------------------------------
+-- last changes: <date> <initials> <log>
+-- <extended description>
+-------------------------------------------------------------------------------
+-- TODO: <next thing to do>
+-- <another thing to do>
+--
+-------------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use std.textio.all;
+use ieee.std_logic_textio.all;
+use work.sig_defs_pkg.all;
+use work.util_pkg.all;
+
+--=============================================================================
+--Testbench entity declaration
+--=============================================================================
+entity gbt_mod_tb is
+end entity gbt_mod_tb;
+
+--===============================================================================
+--Architecture declaration
+--===============================================================================
+
+architecture behaviour of gbt_mod_tb is
+
+	--===============================================================================
+	--Signal Aliasing
+	--===============================================================================	
+	
+	--===============================================================================
+	--Signal Declaration
+	--===============================================================================
+	signal s_clk_i: std_logic;
+	signal s_reset_n_i: std_logic;
+	signal s_s2_busy_i: std_logic;
+	signal s_clk_running: boolean;
+	signal s_gbt_modI: t_gbt_rfmtI;
+	signal s_gbt_modO: t_gbt_fifoO;
+	signal s_s1_data_v_o: std_logic;
+	
+	constant c_SETTLING_TIME: time :=2 ns;
+		
+	--===============================================================================
+	--Component Declaration
+	--===============================================================================
+	component gbt_mod is
+	port(clk_i: in std_logic;
+	  reset_n_i: in std_logic;
+	  s2_busy_i: in std_logic;
+	  gbt_modI: in t_gbt_rfmtI;
+	  --s1_data_v_o: out std_logic;
+	  gbt_modO: out t_gbt_fifoO);
+	end component gbt_mod;
+
+	--===============================================================================
+	--Architecture begin
+	--===============================================================================
+begin
+
+	clk_240(s_clk_i,s_clk_running, 60); --Clock generator procedure
+	
+		
+	--===============================================================================
+	--Component Instantiation
+	--===============================================================================
+	UUT : gbt_mod
+		port map(
+			clk_i=>s_clk_i,
+			reset_n_i=>s_reset_n_i,
+			s2_busy_i=>s_s2_busy_i,
+			gbt_modI=>s_gbt_modI,
+			--s1_data_v_o=>s_s1_data_v_o,
+			gbt_modO=>s_gbt_modO
+		);
+		
+	gbt_mod_sim: process is
+		file f_gbt_mod_i: text;
+		variable l_gbt_mod_i: line;
+		variable v_v_gbt_data_valid_i: std_logic;
+		variable v_gbt_isdata_i: std_logic;
+		variable v_gbt_data_i: std_logic_vector(79 downto 0);
+		
+	begin
+	file_open(f_gbt_mod_i,"C:\Users\natha\OneDrive\Desktop\Quartus\Mercury-master\Mercury-master\Code\mid_cru_proto\input_files\gbt_mod\gbt_mod_td.txt",read_mode);
+	
+	while not endfile(f_gbt_mod_i) loop
+		readline(f_gbt_mod_i,l_gbt_mod_i);
+		read(l_gbt_mod_i,v_v_gbt_data_valid_i);
+		read(l_gbt_mod_i,v_gbt_isdata_i);
+		read(l_gbt_mod_i,v_gbt_data_i);
+		
+		wait until rising_edge(s_clk_i);
+		
+		s_gbt_modI.gbt_data_valid_i<=v_v_gbt_data_valid_i;
+		s_gbt_modI.gbt_isdata_i<=v_gbt_isdata_i;
+		s_gbt_modI.gbt_data_i<=v_gbt_data_i;
+	end loop;
+	file_close(f_gbt_mod_i);
+	end process gbt_mod_sim;
+
+	s2:process is
+	begin
+		wait until rising_edge(s_clk_i);
+		if s_gbt_modO.gbt_fifo_sync_o='1' then
+			s_s2_busy_i<='1';
+		end if;
+	end process s2;
+	
+	output_gbt_mod_mt22: process
+	
+	file f_gbt_mod_mt22_o: text open write_mode is "C:/Users/natha/OneDrive/Desktop/Quartus/Mercury-master/Mercury-master/Code/mid_cru_proto/output_files\gbt_mod\gbt_mod_mt22_td.txt";
+	variable l_gbt_mod_mt22_o: line;
+	variable v_s23_data_v_o: std_logic;
+	variable v_gbt_mod_sync_o: std_logic_vector(63 downto 0);
+	variable time_when: time;
+	
+	begin
+		--strobe the signals 
+		wait until rising_edge(s_clk_i);
+		wait for c_settling_time;
+		
+		write(l_gbt_mod_mt22_o, now, left, 10);
+		write(l_gbt_mod_mt22_o,s_gbt_modO.gbt_fifo_sync_o, right,5);
+		write(l_gbt_mod_mt22_o, s_gbt_modO.gbt_fifo_data_v_o, right, 5);
+		write(l_gbt_mod_mt22_o, s_gbt_modO.gbt_fifo_data_mt22_o, right, 70);
+		
+		writeline(f_gbt_mod_mt22_o, l_gbt_mod_mt22_o);
+	end process output_gbt_mod_mt22;
+	
+	output_gbt_mod_mt21: process
+	
+	file f_gbt_mod_mt21_o: text open write_mode is "C:/Users/natha/OneDrive/Desktop/Quartus/Mercury-master/Mercury-master/Code/mid_cru_proto/output_files\gbt_mod\gbt_mod_mt21_td.txt";
+	variable l_gbt_mod_mt21_o: line;
+	variable v_s23_data_v_o: std_logic;
+	variable v_gbt_mod_sync_o: std_logic_vector(63 downto 0);
+	variable time_when: time;
+	
+	begin
+		--strobe the signals 
+		wait until rising_edge(s_clk_i);
+		wait for c_settling_time;
+		
+		write(l_gbt_mod_mt21_o, now, left, 10);
+		write(l_gbt_mod_mt21_o,s_gbt_modO.gbt_fifo_sync_o, right,5);
+		write(l_gbt_mod_mt21_o, s_gbt_modO.gbt_fifo_data_v_o, right, 5);
+		write(l_gbt_mod_mt21_o, s_gbt_modO.gbt_fifo_data_mt21_o, right, 70);
+		
+		writeline(f_gbt_mod_mt21_o, l_gbt_mod_mt21_o);
+	end process output_gbt_mod_mt21;
+	
+	output_gbt_mod_mt12: process
+	
+	file f_gbt_mod_mt12_o: text open write_mode is "C:/Users/natha/OneDrive/Desktop/Quartus/Mercury-master/Mercury-master/Code/mid_cru_proto/output_files\gbt_mod\gbt_mod_mt12_td.txt";
+	variable l_gbt_mod_mt12_o: line;
+	variable v_s23_data_v_o: std_logic;
+	variable v_gbt_mod_sync_o: std_logic_vector(63 downto 0);
+	variable time_when: time;
+	
+	begin
+		--strobe the signals 
+		wait until rising_edge(s_clk_i);
+		wait for c_settling_time;
+		
+		write(l_gbt_mod_mt12_o, now, left, 10);
+		write(l_gbt_mod_mt12_o,s_gbt_modO.gbt_fifo_sync_o, right,5);
+		write(l_gbt_mod_mt12_o, s_gbt_modO.gbt_fifo_data_v_o, right, 5);
+		write(l_gbt_mod_mt12_o, s_gbt_modO.gbt_fifo_data_mt12_o, right, 70);
+		
+		writeline(f_gbt_mod_mt12_o, l_gbt_mod_mt12_o);
+	end process output_gbt_mod_mt12;
+	
+	output_gbt_mod_mt11: process
+	
+	file f_gbt_mod_mt11_o: text open write_mode is "C:/Users/natha/OneDrive/Desktop/Quartus/Mercury-master/Mercury-master/Code/mid_cru_proto/output_files\gbt_mod\gbt_mod_mt11_td.txt";
+	variable l_gbt_mod_mt11_o: line;
+	variable v_s23_data_v_o: std_logic;
+	variable v_gbt_mod_sync_o: std_logic_vector(63 downto 0);
+	variable time_when: time;
+	
+	begin
+		--strobe the signals 
+		wait until rising_edge(s_clk_i);
+		wait for c_settling_time;
+		
+		write(l_gbt_mod_mt11_o, now, left, 10);
+		write(l_gbt_mod_mt11_o,s_gbt_modO.gbt_fifo_sync_o, right,5);
+		write(l_gbt_mod_mt11_o, s_gbt_modO.gbt_fifo_data_v_o, right, 5);
+		write(l_gbt_mod_mt11_o, s_gbt_modO.gbt_fifo_data_mt11_o, right, 70);
+		
+		writeline(f_gbt_mod_mt11_o, l_gbt_mod_mt11_o);
+	end process output_gbt_mod_mt11;
+
+end architecture behaviour;
+--===============================================================================
+--Architecture end
+--===============================================================================

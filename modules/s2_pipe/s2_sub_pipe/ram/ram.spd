@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="ram_2port_191/sim/ram_ram_2port_191_cg5iama.vhd"
+   type="VHDL"
+   library="ram_2port_191" />
+ <file
+   path="sim/ram.vhd"
+   type="VHDL"
+   library="ram"
+   hasInlineConfiguration="true" />
+ <topLevel name="ram.ram" />
+ <deviceFamily name="cyclone10gx" />
+</simPackage>

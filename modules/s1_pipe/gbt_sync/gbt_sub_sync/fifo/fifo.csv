@@ -1,0 +1,18 @@
+# system info fifo on 2020.04.08.22:23:50
+system_info:
+name,value
+DEVICE,10CX085YF672E5G
+DEVICE_FAMILY,Cyclone 10 GX
+GENERATION_ID,0
+#
+#
+# Files generated for fifo on 2020.04.08.22:23:50
+files:
+filepath,kind,attributes,module,is_top
+sim/fifo.vhd,VHDL,CONTAINS_INLINE_CONFIGURATION,fifo,true
+fifo_191/sim/fifo_fifo_191_nveaihq.vhd,VHDL,,fifo_fifo_191_nveaihq,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+fifo.fifo_0,fifo_fifo_191_nveaihq

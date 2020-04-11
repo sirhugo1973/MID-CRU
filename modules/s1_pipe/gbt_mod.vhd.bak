@@ -1,0 +1,92 @@
+-------------------------------------------------------------------------------
+-- --
+-- University of Cape Town, Electrical Engineering Department--
+-- --
+-------------------------------------------------------------------------------
+--
+-- unit name: gbt_mod-CRU Userlogic Top level Module (gbt_mod.vhd)
+--
+-- author: Nathan Boyles (nathan.boyles@cern.ch)
+--
+-- date: $Date: 25/06/2019: $:
+--
+-- version: $Rev: 0.1: $:
+--
+-- description: <file content, behaviour, purpose, special usage notes...>
+-- <further description>
+--
+-- dependencies: <entity name>, ...
+--
+-- references: <reference one>
+-- <reference two> ...
+--
+-- modified by: $Author:: $:
+--
+-------------------------------------------------------------------------------
+-- last changes: <date> <initials> <log>
+-- <extended description>
+-------------------------------------------------------------------------------
+-- TODO: <next thing to do>
+-- <another thing to do>
+--
+-------------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use work.sig_defs_pkg.all;
+use work.var_defs_pkg.all;
+
+entity gbt_mod is 
+port(clk_i: in std_logic;
+	  reset_n_i: in std_logic;
+	  s2_busy_i: in std_logic;
+	  gbt_modI: in t_gbt_rfmtI;
+	  --s1_data_v_o: out std_logic;
+	  gbt_modO: out t_gbt_fifoO);
+end entity gbt_mod;
+
+architecture main of gbt_mod is
+
+	--==============================================================
+	--Signal Declaration
+	--==============================================================
+	
+	signal s_gbt_mod: t_gbt_rfmtO;
+	signal s_s2_busy_i: std_logic;
+	
+	--==============================================================
+	--Component Declaration
+	--==============================================================
+	
+	component gbt_rfmt is
+	port(clk_i: in std_logic;
+		  reset_n_i: in std_logic;
+		  gbt_rfmtI: in t_gbt_rfmtI;
+		  gbt_rfmtO: out t_gbt_rfmtO);
+	end component gbt_rfmt;
+	
+	component gbt_fifo is
+	port(clk_i: in std_logic;
+		  reset_n_i: in std_logic;
+	     gbt_s2_busy_i: in std_logic;
+	     gbt_fifoI: in t_gbt_rfmtO;
+		  gbt_fifoO: out t_gbt_fifoO);
+	end component gbt_fifo;
+
+	
+	begin
+	
+	
+	gbt_rfmt_inst: gbt_rfmt port map(clk_i=>clk_i,
+											   reset_n_i=>reset_n_i,
+												gbt_rfmtI=>gbt_modI,
+												gbt_rfmtO=>s_gbt_mod);
+												
+	gbt_fifo_inst: gbt_fifo port map(clk_i=>clk_i,
+												reset_n_i=>reset_n_i,
+												gbt_s2_busy_i=>s2_busy_i,
+												gbt_fifoI=>s_gbt_mod,
+												gbt_fifoO=>gbt_modO);
+												
+
+end main;

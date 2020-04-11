@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <window width="1942" height="1042" x="-11" y="-11" />
+ <generation path="" synthesis="VHDL" simulation="VHDL" />
+ <hdlexample language="VHDL" />
+ <library expandedCategories="Library,Existing IP Variants,Project" />
+</preferences>

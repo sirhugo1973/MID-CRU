@@ -1,0 +1,18 @@
+# system info ram on 2020.04.08.22:28:15
+system_info:
+name,value
+DEVICE,10CX220YU484I6G
+DEVICE_FAMILY,Cyclone 10 GX
+GENERATION_ID,0
+#
+#
+# Files generated for ram on 2020.04.08.22:28:15
+files:
+filepath,kind,attributes,module,is_top
+sim/ram.vhd,VHDL,CONTAINS_INLINE_CONFIGURATION,ram,true
+ram_2port_191/sim/ram_ram_2port_191_cg5iama.vhd,VHDL,,ram_ram_2port_191_cg5iama,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+ram.ram_2port_0,ram_ram_2port_191_cg5iama

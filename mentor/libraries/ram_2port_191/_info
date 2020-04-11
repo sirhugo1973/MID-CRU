@@ -1,0 +1,52 @@
+m255
+K4
+z2
+!s11e MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/natha/Desktop/mid_cru_proto/mentor
+Eram_ram_2port_191_cg5iama
+Z1 w1586366895
+Z2 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 SPb@D>WBXnIZP6nXFPjBB0
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+R0
+Z5 8../modules/s2_pipe/s2_sub_pipe/ram/ram_2port_191/sim/ram_ram_2port_191_cg5iama.vhd
+Z6 F../modules/s2_pipe/s2_sub_pipe/ram/ram_2port_191/sim/ram_ram_2port_191_cg5iama.vhd
+l0
+L22
+V4B6fmP3[:f;8]C_o2H[X^2
+!s100 6FdHNP9z`7>5aVC[>O<=[2
+Z7 OV;C;2019.2;69
+32
+Z8 !s110 1586564618
+!i10b 1
+Z9 !s108 1586564618.000000
+Z10 !s90 -reportprogress|300|../modules/s2_pipe/s2_sub_pipe/ram/ram_2port_191/sim/ram_ram_2port_191_cg5iama.vhd|-work|ram_2port_191|
+Z11 !s107 ../modules/s2_pipe/s2_sub_pipe/ram/ram_2port_191/sim/ram_ram_2port_191_cg5iama.vhd|
+!i113 1
+Z12 o-work ram_2port_191
+Z13 tExplicit 1 CvgOpt 0
+Asyn
+R2
+R3
+R4
+Z14 DEx4 work 25 ram_ram_2port_191_cg5iama 0 22 4B6fmP3[:f;8]C_o2H[X^2
+l45
+L40
+Z15 VM24afhbVQok0;f:NW`F[T0
+Z16 !s100 0mnY?S[;g_Ji63199gCgN0
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13

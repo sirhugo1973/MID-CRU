@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="fifo_191/sim/fifo_fifo_191_nveaihq.vhd"
+   type="VHDL"
+   library="fifo_191" />
+ <file
+   path="sim/fifo.vhd"
+   type="VHDL"
+   library="fifo"
+   hasInlineConfiguration="true" />
+ <topLevel name="fifo.fifo" />
+ <deviceFamily name="cyclone10gx" />
+</simPackage>

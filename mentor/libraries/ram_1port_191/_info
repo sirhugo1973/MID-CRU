@@ -1,0 +1,52 @@
+m255
+K4
+z2
+!s11e MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/natha/Desktop/mid_cru_proto/mentor
+Eram_s3_ram_1port_191_ef7qrwa
+Z1 w1586366846
+Z2 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 SPb@D>WBXnIZP6nXFPjBB0
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+R0
+Z5 8../modules/s3_pipe/ram_s3/ram_1port_191/sim/ram_s3_ram_1port_191_ef7qrwa.vhd
+Z6 F../modules/s3_pipe/ram_s3/ram_1port_191/sim/ram_s3_ram_1port_191_ef7qrwa.vhd
+l0
+L22
+VFR3YDMUa[4Y`b6D7jVn_Z3
+!s100 4Z;988QNegZCG=hIhD4gH2
+Z7 OV;C;2019.2;69
+32
+Z8 !s110 1586564617
+!i10b 1
+Z9 !s108 1586564617.000000
+Z10 !s90 -reportprogress|300|../modules/s3_pipe/ram_s3/ram_1port_191/sim/ram_s3_ram_1port_191_ef7qrwa.vhd|-work|ram_1port_191|
+Z11 !s107 ../modules/s3_pipe/ram_s3/ram_1port_191/sim/ram_s3_ram_1port_191_ef7qrwa.vhd|
+!i113 1
+Z12 o-work ram_1port_191
+Z13 tExplicit 1 CvgOpt 0
+Asyn
+R2
+R3
+R4
+Z14 DEx4 work 28 ram_s3_ram_1port_191_ef7qrwa 0 22 FR3YDMUa[4Y`b6D7jVn_Z3
+l39
+L35
+Z15 V;`acK;EG]YRmIKME7BJ`z2
+Z16 !s100 9FUz;6h<T]j2j739PZ]9Q2
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13

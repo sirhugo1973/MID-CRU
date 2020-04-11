@@ -1,0 +1,53 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/mentor
+Eram_s3
+Z1 w1586366846
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z5 8../ram_s3/sim/ram_s3.vhd
+Z6 F../ram_s3/sim/ram_s3.vhd
+l0
+L10
+VE]dDVl4Y]?KodRU<9gcMl2
+!s100 j;`9V<?Zh035omz2l_kVj1
+Z7 OV;C;10.5b;63
+32
+Z8 !s110 1586378371
+!i10b 1
+Z9 !s108 1586378371.000000
+Z10 !s90 -reportprogress|300|../ram_s3/sim/ram_s3.vhd|-work|ram_s3|
+Z11 !s107 ../ram_s3/sim/ram_s3.vhd|
+!i113 1
+Z12 o-work ram_s3
+Z13 tExplicit 1 CvgOpt 0
+Artl
+Z14 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 6`GHcm:DR>=X_840X1FV;0
+Z15 DEx13 ram_1port_191 28 ram_s3_ram_1port_191_ef7qrwa 0 22 FR3YDMUa[4Y`b6D7jVn_Z3
+R2
+R3
+R4
+Z16 DEx4 work 6 ram_s3 0 22 E]dDVl4Y]?KodRU<9gcMl2
+l35
+L21
+Z17 VYSbGRG0ah<z6oHFNkzObO0
+Z18 !s100 F@^]eHJK<:Ln;GZB7P=hd2
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13

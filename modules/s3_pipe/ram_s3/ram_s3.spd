@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="ram_1port_191/sim/ram_s3_ram_1port_191_ef7qrwa.vhd"
+   type="VHDL"
+   library="ram_1port_191" />
+ <file
+   path="sim/ram_s3.vhd"
+   type="VHDL"
+   library="ram_s3"
+   hasInlineConfiguration="true" />
+ <topLevel name="ram_s3.ram_s3" />
+ <deviceFamily name="cyclone10gx" />
+</simPackage>

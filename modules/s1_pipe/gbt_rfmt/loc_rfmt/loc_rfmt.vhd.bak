@@ -1,0 +1,261 @@
+-------------------------------------------------------------------------------
+-- --
+-- University of Cape Town, Electrical Engineering Department--
+-- --
+-------------------------------------------------------------------------------
+--
+-- unit name: loc_rfmt.vhd
+--
+-- author: Nathan Boyles (nathanh.boyles@gmail.com)
+--
+-- date: 07/04/2020
+--
+-- version: 0.1
+--
+-- description: Reformatting of data from a single local card using regional and 
+--              local data in GBT word 
+--
+-- dependencies: o2_h_synth.vhd; var_defs_pkg.vhd; util_pkg.vhd; sig_defs_pkg.vhd 
+--
+-- references: <reference one>
+-- <reference two> ...
+--
+-- modified by: Nathan Boyles
+--
+-------------------------------------------------------------------------------
+-- last changes: 07/04/2020 NB Full System Integration for mid_cru_proto
+-------------------------------------------------------------------------------
+-- TODO: <next thing to do>
+-- <another thing to do>
+--
+-------------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use work.sig_defs_pkg.all;
+use work.util_pkg.all;
+use work.var_defs_pkg.all;
+
+--=============================================================================
+--Entity declaration for loc_rfmt
+--=============================================================================
+entity loc_rfmt is
+port(
+	--global input signals
+	clk_i: in std_logic; --local bus clock
+	reset_n_i: in std_logic; --reset =0: reset active
+									 --      =1: no reset
+	loc_rfmtI: in t_loc_rfmtI; --GBT data signals defined in sig_defs_pkg
+	
+	--global output signals
+	loc_rfmtO: out t_loc_rfmtO
+);
+end entity loc_rfmt;
+
+--===============================================================================
+--Architecture declaration
+--===============================================================================
+
+architecture behaviour of loc_rfmt is
+
+	--===============================================================================
+	--Signal Aliasing
+	--==============================================================================
+	
+	--===============================================================================
+	--Signal Declaration
+	--===============================================================================
+	signal s_loc_rfmt_i: t_o2_h_synthI;
+	signal s_loc_rfmt_o: t_o2_h_synthO;
+	
+	--===============================================================================
+	--Component Declaration
+	--===============================================================================
+	
+	component o2_h_synth is
+	port(
+		--global input signals
+		clk_i: in std_logic; --local bus clock
+		reset_n_i: in std_logic; --reset =0: reset active
+										 --      =1: no reset
+		o2_h_synthI: in t_o2_h_synthI; --GBT data signals defined in sig_defs_pkg
+		--global output signals
+		o2_h_synthO: out t_o2_h_synthO
+	);
+	end component o2_h_synth;
+	
+
+	--===============================================================================
+	--Architecture begin
+	--===============================================================================
+begin
+
+	--===============================================================================
+	--Component Instantiation
+	--===============================================================================
+	cmp_o2_h_synth : o2_h_synth 
+		port map(
+			clk_i     => clk_i, 
+			reset_n_i => reset_n_i, 
+			o2_h_synthI => s_loc_rfmt_i,
+		   o2_h_synthO => s_loc_rfmt_o
+		);
+
+	process(clk_i,reset_n_i,loc_rfmtI) is
+	
+	--===========================================================
+	--Variable Declaration
+	--===========================================================
+	variable v_byte_count: integer range 1 to 22:=1;
+	variable v_reg: t_reg;
+	variable v_loc: t_loc;
+	
+	begin
+		if rising_edge(clk_i) then
+			loc_rfmtO.loc_rfmt_data_valid_o<='0';
+			if loc_rfmtI.loc_rfmt_data_valid_i ='1' and loc_rfmtI.loc_rfmt_is_data_i='1' then
+				if v_byte_count<22 then
+					if s_loc_rfmt_o.o2_h_synth_valid_o = '1' then
+							v_loc.o2_h_mt22:=s_loc_rfmt_o.o2_h_synth_mt22_o;
+							v_loc.o2_h_mt21:=s_loc_rfmt_o.o2_h_synth_mt21_o;
+							v_loc.o2_h_mt12:=s_loc_rfmt_o.o2_h_synth_mt12_o;
+							v_loc.o2_h_mt11:=s_loc_rfmt_o.o2_h_synth_mt11_o;
+					end if;
+					case v_byte_count is
+							when 1  =>
+								v_reg.stat:=loc_rfmtI.loc_rfmt_reg_data_i;
+								v_loc.stat:=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 2  =>
+								v_reg.trig:=loc_rfmtI.loc_rfmt_reg_data_i;
+								v_loc.trig:=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 3  =>
+								v_reg.ibc(15 downto 8):=loc_rfmtI.loc_rfmt_reg_data_i;
+								v_loc.ibc(15 downto 8):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 4  =>
+								v_reg.ibc(7 downto 0):=loc_rfmtI.loc_rfmt_reg_data_i;
+								v_loc.ibc(7 downto 0):=loc_rfmtI.loc_rfmt_loc_data_i;
+									
+							when 5  =>
+								--Synthesize O2 Header
+	
+								v_reg.cid:=loc_rfmtI.loc_rfmt_reg_data_i(7 downto 4);
+								v_loc.cid:=loc_rfmtI.loc_rfmt_loc_data_i(7 downto 4);
+--								cid_flag<='1';
+								--=====================================
+								v_reg.trck:=loc_rfmtI.loc_rfmt_reg_data_i(3 downto 0);
+								v_loc.trck:=loc_rfmtI.loc_rfmt_loc_data_i(3 downto 0);
+								
+								if s_loc_rfmt_o.o2_h_synth_valid_o /= '0' then
+									s_loc_rfmt_i.o2_h_synth_valid_i<='1';
+									s_loc_rfmt_i.o2_h_synth_reg_id_i<=v_loc.cid;
+									s_loc_rfmt_i.o2_h_synth_loc_id_i<=v_loc.cid;
+								else
+									s_loc_rfmt_i.o2_h_synth_valid_i<='0';
+								end if;
+								--===========================================================
+								--Inject dummy data based on tracklet info
+								if v_reg.trck /=x"0" then
+									case v_loc.trck is
+										when x"f"=>
+										when x"e"=>
+											v_loc.mt22_sp:=x"aaaaaaaa";
+										when x"c"=>
+											v_loc.mt21_sp:=x"aaaaaaaa";
+										when x"b"=>
+											v_loc.mt22_sp:=x"aaaaaaaa";
+											v_loc.mt21_sp:=x"aaaaaaaa";
+										when x"a"=>
+											v_loc.mt12_sp:=x"aaaaaaaa";
+										when x"9"=>
+											v_loc.mt22_sp:=x"aaaaaaaa";
+											v_loc.mt12_sp:=x"aaaaaaaa";
+										when x"8"=>
+											v_loc.mt21_sp:=x"aaaaaaaa";
+											v_loc.mt12_sp:=x"aaaaaaaa";
+										when x"7"=>
+											v_loc.mt22_sp:=x"aaaaaaaa";
+											v_loc.mt21_sp:=x"aaaaaaaa";
+											v_loc.mt12_sp:=x"aaaaaaaa";
+										when x"6"=>
+											v_loc.mt22_sp:=x"aaaaaaaa";
+											v_loc.mt11_sp:=x"aaaaaaaa";
+										when x"5"=>
+											v_loc.mt22_sp:=x"aaaaaaaa";
+											v_loc.mt21_sp:=x"aaaaaaaa";
+											v_loc.mt11_sp:=x"aaaaaaaa";
+										when x"4"=>
+											v_loc.mt21_sp:=x"aaaaaaaa";
+											v_loc.mt11_sp:=x"aaaaaaaa";
+										when x"3" =>
+											v_loc.mt12_sp:=x"aaaaaaaa";
+											v_loc.mt11_sp:=x"aaaaaaaa";
+										when x"2" =>
+											v_loc.mt22_sp:=x"aaaaaaaa";
+											v_loc.mt12_sp:=x"aaaaaaaa";
+											v_loc.mt11_sp:=x"aaaaaaaa";
+										when x"1" =>
+											v_loc.mt21_sp:=x"aaaaaaaa";
+											v_loc.mt12_sp:=x"aaaaaaaa";
+											v_loc.mt11_sp:=x"aaaaaaaa";
+										when x"0"=>
+											v_loc.mt22_sp:=x"aaaaaaaa";
+											v_loc.mt21_sp:=x"aaaaaaaa";
+											v_loc.mt12_sp:=x"aaaaaaaa";
+											v_loc.mt11_sp:=x"aaaaaaaa";
+										when others =>
+									end case;
+								else
+									v_loc.mt22_sp:=x"aaaaaaaa";
+									v_loc.mt21_sp:=x"aaaaaaaa";
+									v_loc.mt12_sp:=x"aaaaaaaa";
+									v_loc.mt11_sp:=x"aaaaaaaa"; 
+								end if;
+							when 6  =>
+									v_loc.mt22_sp(31 downto 24):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 7  =>
+									v_loc.mt22_sp(23 downto 16):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 8  =>
+									v_loc.mt22_sp(15 downto 8):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 9  =>
+									v_loc.mt22_sp(7 downto 0):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 10 =>
+									v_loc.mt21_sp(31 downto 24):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 11  =>
+									v_loc.mt21_sp(23 downto 16):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 12  =>
+									v_loc.mt21_sp(15 downto 8):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 13  =>
+									v_loc.mt21_sp(7 downto 0):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 14  =>
+									v_loc.mt12_sp(31 downto 24):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 15  =>
+									v_loc.mt12_sp(23 downto 16):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 16  =>
+									v_loc.mt12_sp(15 downto 8):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 17  =>
+									v_loc.mt12_sp(7 downto 0):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 18  =>
+									v_loc.mt11_sp(31 downto 24):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 19  =>
+									v_loc.mt11_sp(23 downto 16):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 20 =>
+									v_loc.mt11_sp(15 downto 8):=loc_rfmtI.loc_rfmt_loc_data_i;
+							when 21 =>
+									v_loc.mt11_sp(7 downto 0):=loc_rfmtI.loc_rfmt_loc_data_i;
+									loc_rfmtO.loc_rfmt_data_valid_o<='1';
+									loc_rfmtO.loc_rfmt_mt22_data_o<="0000000000000" & v_loc.o2_h_mt22 & v_loc.mt22_sp;
+									loc_rfmtO.loc_rfmt_mt21_data_o<="0000000000000" & v_loc.o2_h_mt21 & v_loc.mt21_sp;
+									loc_rfmtO.loc_rfmt_mt12_data_o<="0000000000000" & v_loc.o2_h_mt12 & v_loc.mt12_sp;
+									loc_rfmtO.loc_rfmt_mt11_data_o<="0000000000000" & v_loc.o2_h_mt11 & v_loc.mt11_sp;
+							when others =>
+						end case;
+					v_byte_count := v_byte_count + 1;
+				end if;
+			end if;
+		end if;
+	end process;
+
+end architecture behaviour;
+--===============================================================================
+--Architecture end
+--===============================================================================

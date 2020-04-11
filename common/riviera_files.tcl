@@ -1,0 +1,72 @@
+
+proc get_design_libraries {} {
+  set libraries [dict create]
+  dict set libraries ram_1port_191 1
+  dict set libraries ram_s3        1
+  dict set libraries ram_2port_191 1
+  dict set libraries ram           1
+  dict set libraries fifo_191      1
+  dict set libraries fifo          1
+  return $libraries
+}
+
+proc get_memory_files {QSYS_SIMDIR} {
+  set memory_files [list]
+  return $memory_files
+}
+
+proc get_common_design_files {USER_DEFINED_COMPILE_OPTIONS USER_DEFINED_VERILOG_COMPILE_OPTIONS USER_DEFINED_VHDL_COMPILE_OPTIONS QSYS_SIMDIR} {
+  set design_files [dict create]
+  return $design_files
+}
+
+proc get_design_files {USER_DEFINED_COMPILE_OPTIONS USER_DEFINED_VERILOG_COMPILE_OPTIONS USER_DEFINED_VHDL_COMPILE_OPTIONS QSYS_SIMDIR} {
+  set design_files [list]
+  lappend design_files "vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/modules/s3_pipe/ram_s3/ram_1port_191/sim/ram_s3_ram_1port_191_ef7qrwa.vhd"]\"  -work ram_1port_191"      
+  lappend design_files "vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/modules/s3_pipe/ram_s3/sim/ram_s3.vhd"]\"  -work ram_s3"                                                 
+  lappend design_files "vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/modules/s2_pipe/s2_sub_pipe/ram/ram_2port_191/sim/ram_ram_2port_191_cg5iama.vhd"]\"  -work ram_2port_191"
+  lappend design_files "vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/modules/s2_pipe/s2_sub_pipe/ram/sim/ram.vhd"]\"  -work ram"                                              
+  lappend design_files "vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/modules/s1_pipe/gbt_sync/gbt_sub_sync/fifo/fifo_191/sim/fifo_fifo_191_nveaihq.vhd"]\"  -work fifo_191"   
+  lappend design_files "vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/modules/s1_pipe/gbt_sync/gbt_sub_sync/fifo/sim/fifo.vhd"]\"  -work fifo"                                 
+  return $design_files
+}
+
+proc get_elab_options {SIMULATOR_TOOL_BITNESS} {
+  set ELAB_OPTIONS ""
+  if ![ string match "bit_64" $SIMULATOR_TOOL_BITNESS ] {
+  } else {
+  }
+  return $ELAB_OPTIONS
+}
+
+
+proc get_sim_options {SIMULATOR_TOOL_BITNESS} {
+  set SIM_OPTIONS ""
+  if ![ string match "bit_64" $SIMULATOR_TOOL_BITNESS ] {
+  } else {
+  }
+  return $SIM_OPTIONS
+}
+
+
+proc get_env_variables {SIMULATOR_TOOL_BITNESS} {
+  set ENV_VARIABLES [dict create]
+  set LD_LIBRARY_PATH [dict create]
+  dict set ENV_VARIABLES "LD_LIBRARY_PATH" $LD_LIBRARY_PATH
+  if ![ string match "bit_64" $SIMULATOR_TOOL_BITNESS ] {
+  } else {
+  }
+  return $ENV_VARIABLES
+}
+
+
+proc normalize_path {FILEPATH} {
+    if {[catch { package require fileutil } err]} { 
+        return $FILEPATH 
+    } 
+    set path [fileutil::lexnormalize [file join [pwd] $FILEPATH]]  
+    if {[file pathtype $FILEPATH] eq "relative"} { 
+        set path [fileutil::relative [pwd] $path] 
+    } 
+    return $path 
+} 

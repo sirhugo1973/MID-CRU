@@ -1,0 +1,152 @@
+-------------------------------------------------------------------------------
+-- --
+-- University of Cape Town, Electrical Engineering Department--
+-- --
+-------------------------------------------------------------------------------
+--
+-- unit name: mid_cru_proto_tb.vhd
+--
+-- author: Nathan Boyles (nathanh.boyles@gmail.com)
+--
+-- date: $Date: 08/04/2020
+--
+-- version: 0.1
+--
+-- description: Testbench for MID CRU User Logic Top Level Entity
+--
+-- dependencies: o2_h_syn.vhd sig_defs_pkg.vhd
+--
+-- references: <reference one>
+-- <reference two> ...
+--
+-- modified by: Nathan Boyles (nathanh.boyles@gmail.com)
+--
+-------------------------------------------------------------------------------
+-- last changes: 08/04/2020 NB Full System Integration
+-- <extended description>
+-------------------------------------------------------------------------------
+-- TODO: <next thing to do>
+-- <another thing to do>
+--
+-------------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use std.textio.all;
+use ieee.std_logic_textio.all;
+use work.sig_defs_pkg.all;
+use work.util_pkg.all;
+
+--=============================================================================
+--Testbench entity declaration
+--=============================================================================
+entity mid_cru_proto_tb is
+end entity mid_cru_proto_tb;
+
+--===============================================================================
+--Architecture declaration
+--===============================================================================
+
+architecture behaviour of mid_cru_proto_tb is
+
+	--===============================================================================
+	--Signal Aliasing
+	--===============================================================================	
+	
+	--===============================================================================
+	--Signal Declaration
+	--===============================================================================
+	signal s_clk_i: std_logic;
+	signal s_reset_n_i: std_logic;
+	signal s_clk_running: boolean;
+	signal s_midI: t_midI;
+	signal s_midO: t_s3_pipeO;
+	
+	constant c_SETTLING_TIME: time :=2 ns;
+	
+	
+	
+	--===============================================================================
+	--Component Declaration
+	--===============================================================================
+	component mid_cru_proto is
+	port(
+	--global input signals
+	clk_i: in std_logic; --local bus clock
+	reset_n_i: in std_logic; --reset =0: reset active
+									 --      =1: no reset
+	midI: in t_midI; --GBT data signals defined in sig_defs_pkg
+	midO: out t_s3_pipeO
+	--global output signals
+);
+end component mid_cru_proto;
+	--===============================================================================
+	--Architecture begin
+	--===============================================================================
+begin
+
+	clk_240(s_clk_i,s_clk_running,700); --Clock generator procedure
+	
+		
+	--===============================================================================
+	--Component Instantiation
+	--===============================================================================
+	cmp_mid_cru_proto : mid_cru_proto
+	port map(clk_i=>s_clk_i,
+				reset_n_i=>s_reset_n_i,
+				midI=>s_midI,
+				midO=>s_midO
+	);
+		
+	mid_cru_proto_sim: process is
+		file f_mid_cru_proto_i: text;
+		variable l_mid_cru_proto_i: line;
+		variable v_v_mid_cru_proto_gbt_data_valid_i: std_logic_vector(15 downto 0);
+		variable v_mid_cru_proto_isdata_i: std_logic_vector(15 downto 0);
+		variable v_mid_cru_proto_gbt_data_i: std_logic_vector(1279 downto 0);
+		
+	begin
+	file_open(f_mid_cru_proto_i,"C:\Users\natha\Desktop\mid_cru_proto\in_files\mid_cru_proto_if.txt",read_mode);
+	
+	while not endfile(f_mid_cru_proto_i) loop
+		readline(f_mid_cru_proto_i,l_mid_cru_proto_i);
+		read(l_mid_cru_proto_i,v_v_mid_cru_proto_gbt_data_valid_i);
+		read(l_mid_cru_proto_i,v_mid_cru_proto_isdata_i);
+		read(l_mid_cru_proto_i,v_mid_cru_proto_gbt_data_i);
+		
+		wait until rising_edge(s_clk_i);
+		
+		s_midI.gbt_data_valid_i<=v_v_mid_cru_proto_gbt_data_valid_i;
+		s_midI.gbt_isdata_i<=v_mid_cru_proto_isdata_i;
+		s_midI.gbt_data_i<=v_mid_cru_proto_gbt_data_i;
+	end loop;
+	file_close(f_mid_cru_proto_i);
+	end process mid_cru_proto_sim;
+	
+	
+	mid_cru_proto_sim_out: process
+	
+	file f_mid_cru_proto_o: text open write_mode is "C:\Users\natha\Desktop\mid_cru_proto\out_files\mid_cru_proto_of.txt";
+	variable l_mid_cru_proto_o: line;
+	
+	begin
+		--strobe the signals 
+		wait until rising_edge(s_clk_i);
+		wait for c_settling_time;
+		
+		write(l_mid_cru_proto_o, now, left, 10);		
+		write(l_mid_cru_proto_o, s_midO.s3_pipe_data_v_o, right, 10);
+		write(l_mid_cru_proto_o, s_midO.s3_pipe_data_o(63 downto 32), right, 35);
+		write(l_mid_cru_proto_o, s_midO.s3_pipe_data_o(31 downto 24), right, 10);
+		write(l_mid_cru_proto_o, s_midO.s3_pipe_data_o(23 downto 16), right, 10);
+		write(l_mid_cru_proto_o, s_midO.s3_pipe_data_o(15 downto 8), right, 10);
+		write(l_mid_cru_proto_o, s_midO.s3_pipe_data_o(7 downto 0), right, 10);
+		writeline(f_mid_cru_proto_o, l_mid_cru_proto_o);
+	end process mid_cru_proto_sim_out;
+	
+			
+		
+end architecture behaviour;
+--===============================================================================
+--Architecture end
+--===============================================================================

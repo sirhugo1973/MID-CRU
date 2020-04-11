@@ -1,0 +1,677 @@
+Synthesis report
+Wed Apr  8 17:54:35 2020
+Quartus Prime Version 19.1.0 Build 240 03/26/2019 SJ Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Synthesis Summary
+  2. Synthesis Settings
+  3. Parallel Compilation
+  4. Synthesis Source Files Read
+  5. Synthesis IP Cores Summary
+  6. Synthesis Partition Summary
+  7. Source Assignments for \s_ram:3:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1
+  8. Source Assignments for \s_ram:2:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1
+  9. Source Assignments for \s_ram:1:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1
+ 10. Source Assignments for \s_ram:0:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1
+ 11. Parameter Settings for User Entity Instance: \s_ram:3:u0|ram_1port_0|altera_syncram_component
+ 12. Parameter Settings for User Entity Instance: \s_ram:2:u0|ram_1port_0|altera_syncram_component
+ 13. Parameter Settings for User Entity Instance: \s_ram:1:u0|ram_1port_0|altera_syncram_component
+ 14. Parameter Settings for User Entity Instance: \s_ram:0:u0|ram_1port_0|altera_syncram_component
+ 15. Partition "root_partition" Resource Utilization by Entity
+ 16. Registers Removed During Synthesis
+ 17. General Register Statistics for Partition "root_partition"
+ 18. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 19. Post-Synthesis Netlist Statistics for Partition "root_partition"
+ 20. Synthesis Resource Usage Summary for Partition "root_partition"
+ 21. Synthesis RAM Summary for Partition "root_partition"
+ 22. Synthesis Messages
+
+
+
++---------------------------------------------------------------+
+; Synthesis Summary                                             ;
++-----------------------+---------------------------------------+
+; Synthesis Status      ; Successful - Wed Apr  8 17:54:34 2020 ;
+; Revision Name         ; s3_pipe                               ;
+; Top-level Entity Name ; s3_pipe                               ;
+; Family                ; Cyclone 10 GX                         ;
++-----------------------+---------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Synthesis Settings                                                                                                        ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 10CX085YF672E5G    ;                    ;
+; Top-level entity name                                                           ; s3_pipe            ; s3_pipe            ;
+; Family name                                                                     ; Cyclone 10 GX      ; Cyclone 10 GX      ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Enable Design Assistant in the compilation flow                                 ; Off                ; Off                ;
+; Design Assistant include IP blocks                                              ; Off                ; Off                ;
+; Design Assistant limit on reported violations per rule                          ; 500                ; 500                ;
+; Optimization Mode                                                               ; Balanced           ; Balanced           ;
+; Allow Register Merging                                                          ; On                 ; On                 ;
+; Allow Register Duplication                                                      ; On                 ; On                 ;
+; Allow Register Retiming                                                         ; On                 ; On                 ;
+; Allow RAM Retiming                                                              ; Off                ; Off                ;
+; Allow DSP Retiming                                                              ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Auto               ; Auto               ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Number of Protected Registers Reported in Synthesis Report                      ; 100                ; 100                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
+; Disable DSP Negate Inferencing                                                  ; Off                ; Off                ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Size of the Latch Report                                                        ; 100                ; 100                ;
+; Enable State Machines Inference                                                 ; On                 ; On                 ;
+; Enable formal verification support during compilation                           ; Off                ; Off                ;
+; Size of the PR Initial Conditions Report                                        ; 15                 ; 15                 ;
+; Report PR Initial Values as Errors                                              ; Off                ; Off                ;
+; Fractal Synthesis                                                               ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 2      ;
+; Maximum used               ; 2      ;
++----------------------------+--------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Synthesis Source Files Read                                                                                                                                                                                                                                                                                ;
++---------------------------------------------------------------------------------------------------------+------------------------------+----------------------------------------------------------------------------------------------------------------+---------------+----------------------------------+
+; File Name with User-Entered Path                                                                        ; File Type                    ; File Name with Absolute Path                                                                                   ; Library       ; MD5                              ;
++---------------------------------------------------------------------------------------------------------+------------------------------+----------------------------------------------------------------------------------------------------------------+---------------+----------------------------------+
+; ../../packages/var_defs_pkg.vhd                                                                         ; User VHDL File               ; C:/Users/natha/Desktop/mid_cru_proto/packages/var_defs_pkg.vhd                                                 ;               ; ab8dd1a945a4d373e6f5753331774f9f ;
+; ../../packages/util_pkg.vhd                                                                             ; User VHDL File               ; C:/Users/natha/Desktop/mid_cru_proto/packages/util_pkg.vhd                                                     ;               ; b891324ced6ce7a69387b319e1a090d0 ;
+; ../../packages/sig_defs_pkg.vhd                                                                         ; User VHDL File               ; C:/Users/natha/Desktop/mid_cru_proto/packages/sig_defs_pkg.vhd                                                 ;               ; 679dcd279ffde0d0b604897ecd64e26b ;
+; in_files/s3_pipe_if.txt                                                                                 ; User File                    ; C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/in_files/s3_pipe_if.txt                                   ;               ; 30ceb2c741bb4c875bc60a292bf3f9ca ;
+; s3_pipe_tb.vhd                                                                                          ; User VHDL File               ; C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/s3_pipe_tb.vhd                                            ;               ; 43cf9830580d8fa084255dcec9380c31 ;
+; s3_pipe.vhd                                                                                             ; User VHDL File               ; C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/s3_pipe.vhd                                               ;               ; 9fe4feb50cea47a9174e7c4ece448e3a ;
+; ram_s3.ip                                                                                               ; User File                    ; C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/ram_s3.ip                                                 ;               ; bc2a30439da18a3712ace97f5c8057da ;
+; ram_s3/ram_1port_191/synth/ram_s3_ram_1port_191_ef7qrwa.v                                               ; User Verilog HDL File        ; C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/ram_s3/ram_1port_191/synth/ram_s3_ram_1port_191_ef7qrwa.v ; ram_1port_191 ; 0696893e3508ecf43e12adbf2a81e031 ;
+; ram_s3/synth/ram_s3.vhd                                                                                 ; User VHDL File               ; C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/ram_s3/synth/ram_s3.vhd                                   ; ram_s3        ; 28a591326cf718195bd0756633d2845a ;
+; c:/intelfpga_pro/19.1/quartus/libraries/megafunctions/altera_syncram.tdf                                ; Megafunction                 ; c:/intelfpga_pro/19.1/quartus/libraries/megafunctions/altera_syncram.tdf                                       ; ram_1port_191 ; 61f9d27554da817eb2c942850ebbc656 ;
+; cbx.lst                                                                                                 ; Megafunction                 ; c:/intelfpga_pro/19.1/quartus/libraries/megafunctions/cbx.lst                                                  ;               ; 74d482bfa5a16b8df1f0472f19729291 ;
+; C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/tmp-clearbox/s3_pipe/14928/altera_syncram_aio1.tdf ; Auto-Generated Megafunction  ; C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/tmp-clearbox/s3_pipe/14928/altera_syncram_aio1.tdf        ;               ; 6444a804673e93601a9e1da48b0bb74a ;
+; C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/tmp-clearbox/s3_pipe/14928/altsyncram_js44.tdf     ; Auto-Generated Megafunction  ; C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/tmp-clearbox/s3_pipe/14928/altsyncram_js44.tdf            ;               ; 9b9c55831dcebafa3fc18ff8f151ff4e ;
++---------------------------------------------------------------------------------------------------------+------------------------------+----------------------------------------------------------------------------------------------------------------+---------------+----------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Synthesis IP Cores Summary                                                                                   ;
++-------------------+--------------+---------+--------------+--------------+-----------------+-----------------+
+; Vendor            ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance ; IP Include File ;
++-------------------+--------------+---------+--------------+--------------+-----------------+-----------------+
+; Intel Corporation ; ram_1port    ; 19.1    ; N/A          ; N/A          ; \s_ram:3:u0     ; ram_s3.ip       ;
+; Intel Corporation ; ram_1port    ; 19.1    ; N/A          ; N/A          ; \s_ram:2:u0     ; ram_s3.ip       ;
+; Intel Corporation ; ram_1port    ; 19.1    ; N/A          ; N/A          ; \s_ram:1:u0     ; ram_s3.ip       ;
+; Intel Corporation ; ram_1port    ; 19.1    ; N/A          ; N/A          ; \s_ram:0:u0     ; ram_s3.ip       ;
++-------------------+--------------+---------+--------------+--------------+-----------------+-----------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Synthesis Partition Summary                                                                ;
++----------------+----------------+---------+--------------+-------+-------------------------+
+; Partition Name ; Hierarchy Path ; Type    ; Preservation ; Empty ; Partition Database File ;
++----------------+----------------+---------+--------------+-------+-------------------------+
+; root_partition ; |              ; Default ;              ;       ;                         ;
++----------------+----------------+---------+--------------+-------+-------------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Source Assignments for \s_ram:3:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1 ;
++---------------------------------+--------------------+------+--------------------------------------+
+; Assignment                      ; Value              ; From ; To                                   ;
++---------------------------------+--------------------+------+--------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                    ;
++---------------------------------+--------------------+------+--------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Source Assignments for \s_ram:2:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1 ;
++---------------------------------+--------------------+------+--------------------------------------+
+; Assignment                      ; Value              ; From ; To                                   ;
++---------------------------------+--------------------+------+--------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                    ;
++---------------------------------+--------------------+------+--------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Source Assignments for \s_ram:1:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1 ;
++---------------------------------+--------------------+------+--------------------------------------+
+; Assignment                      ; Value              ; From ; To                                   ;
++---------------------------------+--------------------+------+--------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                    ;
++---------------------------------+--------------------+------+--------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Source Assignments for \s_ram:0:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1 ;
++---------------------------------+--------------------+------+--------------------------------------+
+; Assignment                      ; Value              ; From ; To                                   ;
++---------------------------------+--------------------+------+--------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                    ;
++---------------------------------+--------------------+------+--------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: \s_ram:3:u0|ram_1port_0|altera_syncram_component      ;
++------------------------------------------------------------+----------------------+----------------+
+; Parameter Name                                             ; Value                ; Type           ;
++------------------------------------------------------------+----------------------+----------------+
+; ACF_BLOCK_RAM_AND_MLAB_EQUIVALENT_PAUSED_READ_CAPABILITIES ; DONT CARE            ; Untyped        ;
+; ACF_BLOCK_RAM_AND_MLAB_EQUIVALENT_POWER_UP_CONDITIONS      ; AUTO                 ; Untyped        ;
+; ACF_DISABLE_MLAB_RAM_USE                                   ; FALSE                ; Untyped        ;
+; ACF_IMPLEMENT_MLAB_IN_16_BIT_DEEP_MODE                     ; FALSE                ; Untyped        ;
+; ADDRESS_ACLR_A                                             ; UNUSED               ; Untyped        ;
+; ADDRESS_ACLR_B                                             ; NONE                 ; Untyped        ;
+; ADDRESS_REG_B                                              ; CLOCK1               ; Untyped        ;
+; BYTE_SIZE                                                  ; 8                    ; Untyped        ;
+; BYTEENA_REG_B                                              ; CLOCK1               ; Untyped        ;
+; CLOCK_DUTY_CYCLE_DEPENDENCE                                ; AUTO                 ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                                        ; USE_INPUT_CLKEN      ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                                        ; USE_INPUT_CLKEN      ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A                                       ; BYPASS               ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B                                       ; NORMAL               ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A                                      ; BYPASS               ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B                                      ; NORMAL               ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED                                 ; FALSE                ; Untyped        ;
+; ENABLE_COHERENT_READ                                       ; FALSE                ; Untyped        ;
+; ENABLE_ECC                                                 ; FALSE                ; Untyped        ;
+; ENABLE_ECC_ENCODER_BYPASS                                  ; FALSE                ; Untyped        ;
+; ENABLE_FORCE_TO_ZERO                                       ; FALSE                ; Untyped        ;
+; ENABLE_RUNTIME_MOD                                         ; NO                   ; Untyped        ;
+; IMPLEMENT_IN_LES                                           ; OFF                  ; Untyped        ;
+; INDATA_REG_B                                               ; CLOCK1               ; Untyped        ;
+; INIT_FILE                                                  ; UNUSED               ; Untyped        ;
+; INIT_FILE_LAYOUT                                           ; PORT_A               ; Untyped        ;
+; init_file_restructured                                     ; UNUSED               ; Untyped        ;
+; INSTANCE_NAME                                              ; UNUSED               ; Untyped        ;
+; LOW_POWER_MODE                                             ; AUTO                 ; Untyped        ;
+; MAXIMUM_DEPTH                                              ; 0                    ; Untyped        ;
+; NUMWORDS_A                                                 ; 256                  ; Signed Integer ;
+; NUMWORDS_B                                                 ; 0                    ; Untyped        ;
+; OPERATION_MODE                                             ; SINGLE_PORT          ; Untyped        ;
+; OUTDATA_ACLR_A                                             ; NONE                 ; Untyped        ;
+; OUTDATA_ACLR_B                                             ; NONE                 ; Untyped        ;
+; OUTDATA_REG_A                                              ; CLOCK0               ; Untyped        ;
+; OUTDATA_REG_B                                              ; UNREGISTERED         ; Untyped        ;
+; OUTDATA_SCLR_A                                             ; NONE                 ; Untyped        ;
+; OUTDATA_SCLR_B                                             ; NONE                 ; Untyped        ;
+; POWER_UP_UNINITIALIZED                                     ; FALSE                ; Untyped        ;
+; RAM_BLOCK_TYPE                                             ; AUTO                 ; Untyped        ;
+; RDADDRESS_CLR_A                                            ; NONE                 ; Untyped        ;
+; RDADDRESS_CLR_B                                            ; NONE                 ; Untyped        ;
+; RDCONTROL_REG_B                                            ; CLOCK1               ; Untyped        ;
+; RDEN_POWER_OPTIMIZATION                                    ; ON                   ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS                         ; DONT_CARE            ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A                              ; DONT_CARE            ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B                              ; NEW_DATA_NO_NBE_READ ; Untyped        ;
+; WIDTH_A                                                    ; 64                   ; Signed Integer ;
+; WIDTH_B                                                    ; 1                    ; Untyped        ;
+; WIDTH_BYTEENA_A                                            ; 1                    ; Signed Integer ;
+; WIDTH_BYTEENA_B                                            ; 1                    ; Untyped        ;
+; WIDTH_ECCENCPARITY                                         ; 8                    ; Untyped        ;
+; WIDTH_ECCSTATUS                                            ; 3                    ; Untyped        ;
+; WIDTHAD2_A                                                 ; 1                    ; Untyped        ;
+; WIDTHAD2_B                                                 ; 1                    ; Untyped        ;
+; WIDTHAD_A                                                  ; 8                    ; Signed Integer ;
+; WIDTHAD_B                                                  ; 1                    ; Untyped        ;
+; CBXI_PARAMETER                                             ; altera_syncram_aio1  ; Untyped        ;
++------------------------------------------------------------+----------------------+----------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: \s_ram:2:u0|ram_1port_0|altera_syncram_component      ;
++------------------------------------------------------------+----------------------+----------------+
+; Parameter Name                                             ; Value                ; Type           ;
++------------------------------------------------------------+----------------------+----------------+
+; CBXI_PARAMETER                                             ; altera_syncram_aio1  ; Untyped        ;
+; ACF_BLOCK_RAM_AND_MLAB_EQUIVALENT_PAUSED_READ_CAPABILITIES ; DONT CARE            ; Untyped        ;
+; ACF_BLOCK_RAM_AND_MLAB_EQUIVALENT_POWER_UP_CONDITIONS      ; AUTO                 ; Untyped        ;
+; ACF_DISABLE_MLAB_RAM_USE                                   ; FALSE                ; Untyped        ;
+; ACF_IMPLEMENT_MLAB_IN_16_BIT_DEEP_MODE                     ; FALSE                ; Untyped        ;
+; ADDRESS_ACLR_A                                             ; UNUSED               ; Untyped        ;
+; ADDRESS_ACLR_B                                             ; NONE                 ; Untyped        ;
+; ADDRESS_REG_B                                              ; CLOCK1               ; Untyped        ;
+; BYTE_SIZE                                                  ; 8                    ; Untyped        ;
+; BYTEENA_REG_B                                              ; CLOCK1               ; Untyped        ;
+; CLOCK_DUTY_CYCLE_DEPENDENCE                                ; AUTO                 ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                                        ; USE_INPUT_CLKEN      ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                                        ; USE_INPUT_CLKEN      ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A                                       ; BYPASS               ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B                                       ; NORMAL               ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A                                      ; BYPASS               ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B                                      ; NORMAL               ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED                                 ; FALSE                ; Untyped        ;
+; ENABLE_COHERENT_READ                                       ; FALSE                ; Untyped        ;
+; ENABLE_ECC                                                 ; FALSE                ; Untyped        ;
+; ENABLE_ECC_ENCODER_BYPASS                                  ; FALSE                ; Untyped        ;
+; ENABLE_FORCE_TO_ZERO                                       ; FALSE                ; Untyped        ;
+; ENABLE_RUNTIME_MOD                                         ; NO                   ; Untyped        ;
+; IMPLEMENT_IN_LES                                           ; OFF                  ; Untyped        ;
+; INDATA_REG_B                                               ; CLOCK1               ; Untyped        ;
+; INIT_FILE                                                  ; UNUSED               ; Untyped        ;
+; INIT_FILE_LAYOUT                                           ; PORT_A               ; Untyped        ;
+; init_file_restructured                                     ; UNUSED               ; Untyped        ;
+; INSTANCE_NAME                                              ; UNUSED               ; Untyped        ;
+; LOW_POWER_MODE                                             ; AUTO                 ; Untyped        ;
+; MAXIMUM_DEPTH                                              ; 0                    ; Untyped        ;
+; NUMWORDS_A                                                 ; 256                  ; Signed Integer ;
+; NUMWORDS_B                                                 ; 0                    ; Untyped        ;
+; OPERATION_MODE                                             ; SINGLE_PORT          ; Untyped        ;
+; OUTDATA_ACLR_A                                             ; NONE                 ; Untyped        ;
+; OUTDATA_ACLR_B                                             ; NONE                 ; Untyped        ;
+; OUTDATA_REG_A                                              ; CLOCK0               ; Untyped        ;
+; OUTDATA_REG_B                                              ; UNREGISTERED         ; Untyped        ;
+; OUTDATA_SCLR_A                                             ; NONE                 ; Untyped        ;
+; OUTDATA_SCLR_B                                             ; NONE                 ; Untyped        ;
+; POWER_UP_UNINITIALIZED                                     ; FALSE                ; Untyped        ;
+; RAM_BLOCK_TYPE                                             ; AUTO                 ; Untyped        ;
+; RDADDRESS_CLR_A                                            ; NONE                 ; Untyped        ;
+; RDADDRESS_CLR_B                                            ; NONE                 ; Untyped        ;
+; RDCONTROL_REG_B                                            ; CLOCK1               ; Untyped        ;
+; RDEN_POWER_OPTIMIZATION                                    ; ON                   ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS                         ; DONT_CARE            ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A                              ; DONT_CARE            ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B                              ; NEW_DATA_NO_NBE_READ ; Untyped        ;
+; WIDTH_A                                                    ; 64                   ; Signed Integer ;
+; WIDTH_B                                                    ; 1                    ; Untyped        ;
+; WIDTH_BYTEENA_A                                            ; 1                    ; Signed Integer ;
+; WIDTH_BYTEENA_B                                            ; 1                    ; Untyped        ;
+; WIDTH_ECCENCPARITY                                         ; 8                    ; Untyped        ;
+; WIDTH_ECCSTATUS                                            ; 3                    ; Untyped        ;
+; WIDTHAD2_A                                                 ; 1                    ; Untyped        ;
+; WIDTHAD2_B                                                 ; 1                    ; Untyped        ;
+; WIDTHAD_A                                                  ; 8                    ; Signed Integer ;
+; WIDTHAD_B                                                  ; 1                    ; Untyped        ;
+; CBXI_PARAMETER                                             ; altera_syncram_aio1  ; Untyped        ;
++------------------------------------------------------------+----------------------+----------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: \s_ram:1:u0|ram_1port_0|altera_syncram_component      ;
++------------------------------------------------------------+----------------------+----------------+
+; Parameter Name                                             ; Value                ; Type           ;
++------------------------------------------------------------+----------------------+----------------+
+; CBXI_PARAMETER                                             ; altera_syncram_aio1  ; Untyped        ;
+; ACF_BLOCK_RAM_AND_MLAB_EQUIVALENT_PAUSED_READ_CAPABILITIES ; DONT CARE            ; Untyped        ;
+; ACF_BLOCK_RAM_AND_MLAB_EQUIVALENT_POWER_UP_CONDITIONS      ; AUTO                 ; Untyped        ;
+; ACF_DISABLE_MLAB_RAM_USE                                   ; FALSE                ; Untyped        ;
+; ACF_IMPLEMENT_MLAB_IN_16_BIT_DEEP_MODE                     ; FALSE                ; Untyped        ;
+; ADDRESS_ACLR_A                                             ; UNUSED               ; Untyped        ;
+; ADDRESS_ACLR_B                                             ; NONE                 ; Untyped        ;
+; ADDRESS_REG_B                                              ; CLOCK1               ; Untyped        ;
+; BYTE_SIZE                                                  ; 8                    ; Untyped        ;
+; BYTEENA_REG_B                                              ; CLOCK1               ; Untyped        ;
+; CLOCK_DUTY_CYCLE_DEPENDENCE                                ; AUTO                 ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                                        ; USE_INPUT_CLKEN      ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                                        ; USE_INPUT_CLKEN      ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A                                       ; BYPASS               ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B                                       ; NORMAL               ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A                                      ; BYPASS               ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B                                      ; NORMAL               ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED                                 ; FALSE                ; Untyped        ;
+; ENABLE_COHERENT_READ                                       ; FALSE                ; Untyped        ;
+; ENABLE_ECC                                                 ; FALSE                ; Untyped        ;
+; ENABLE_ECC_ENCODER_BYPASS                                  ; FALSE                ; Untyped        ;
+; ENABLE_FORCE_TO_ZERO                                       ; FALSE                ; Untyped        ;
+; ENABLE_RUNTIME_MOD                                         ; NO                   ; Untyped        ;
+; IMPLEMENT_IN_LES                                           ; OFF                  ; Untyped        ;
+; INDATA_REG_B                                               ; CLOCK1               ; Untyped        ;
+; INIT_FILE                                                  ; UNUSED               ; Untyped        ;
+; INIT_FILE_LAYOUT                                           ; PORT_A               ; Untyped        ;
+; init_file_restructured                                     ; UNUSED               ; Untyped        ;
+; INSTANCE_NAME                                              ; UNUSED               ; Untyped        ;
+; LOW_POWER_MODE                                             ; AUTO                 ; Untyped        ;
+; MAXIMUM_DEPTH                                              ; 0                    ; Untyped        ;
+; NUMWORDS_A                                                 ; 256                  ; Signed Integer ;
+; NUMWORDS_B                                                 ; 0                    ; Untyped        ;
+; OPERATION_MODE                                             ; SINGLE_PORT          ; Untyped        ;
+; OUTDATA_ACLR_A                                             ; NONE                 ; Untyped        ;
+; OUTDATA_ACLR_B                                             ; NONE                 ; Untyped        ;
+; OUTDATA_REG_A                                              ; CLOCK0               ; Untyped        ;
+; OUTDATA_REG_B                                              ; UNREGISTERED         ; Untyped        ;
+; OUTDATA_SCLR_A                                             ; NONE                 ; Untyped        ;
+; OUTDATA_SCLR_B                                             ; NONE                 ; Untyped        ;
+; POWER_UP_UNINITIALIZED                                     ; FALSE                ; Untyped        ;
+; RAM_BLOCK_TYPE                                             ; AUTO                 ; Untyped        ;
+; RDADDRESS_CLR_A                                            ; NONE                 ; Untyped        ;
+; RDADDRESS_CLR_B                                            ; NONE                 ; Untyped        ;
+; RDCONTROL_REG_B                                            ; CLOCK1               ; Untyped        ;
+; RDEN_POWER_OPTIMIZATION                                    ; ON                   ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS                         ; DONT_CARE            ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A                              ; DONT_CARE            ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B                              ; NEW_DATA_NO_NBE_READ ; Untyped        ;
+; WIDTH_A                                                    ; 64                   ; Signed Integer ;
+; WIDTH_B                                                    ; 1                    ; Untyped        ;
+; WIDTH_BYTEENA_A                                            ; 1                    ; Signed Integer ;
+; WIDTH_BYTEENA_B                                            ; 1                    ; Untyped        ;
+; WIDTH_ECCENCPARITY                                         ; 8                    ; Untyped        ;
+; WIDTH_ECCSTATUS                                            ; 3                    ; Untyped        ;
+; WIDTHAD2_A                                                 ; 1                    ; Untyped        ;
+; WIDTHAD2_B                                                 ; 1                    ; Untyped        ;
+; WIDTHAD_A                                                  ; 8                    ; Signed Integer ;
+; WIDTHAD_B                                                  ; 1                    ; Untyped        ;
+; CBXI_PARAMETER                                             ; altera_syncram_aio1  ; Untyped        ;
++------------------------------------------------------------+----------------------+----------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: \s_ram:0:u0|ram_1port_0|altera_syncram_component      ;
++------------------------------------------------------------+----------------------+----------------+
+; Parameter Name                                             ; Value                ; Type           ;
++------------------------------------------------------------+----------------------+----------------+
+; CBXI_PARAMETER                                             ; altera_syncram_aio1  ; Untyped        ;
+; ACF_BLOCK_RAM_AND_MLAB_EQUIVALENT_PAUSED_READ_CAPABILITIES ; DONT CARE            ; Untyped        ;
+; ACF_BLOCK_RAM_AND_MLAB_EQUIVALENT_POWER_UP_CONDITIONS      ; AUTO                 ; Untyped        ;
+; ACF_DISABLE_MLAB_RAM_USE                                   ; FALSE                ; Untyped        ;
+; ACF_IMPLEMENT_MLAB_IN_16_BIT_DEEP_MODE                     ; FALSE                ; Untyped        ;
+; ADDRESS_ACLR_A                                             ; UNUSED               ; Untyped        ;
+; ADDRESS_ACLR_B                                             ; NONE                 ; Untyped        ;
+; ADDRESS_REG_B                                              ; CLOCK1               ; Untyped        ;
+; BYTE_SIZE                                                  ; 8                    ; Untyped        ;
+; BYTEENA_REG_B                                              ; CLOCK1               ; Untyped        ;
+; CLOCK_DUTY_CYCLE_DEPENDENCE                                ; AUTO                 ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                                        ; USE_INPUT_CLKEN      ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                                        ; USE_INPUT_CLKEN      ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A                                       ; BYPASS               ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B                                       ; NORMAL               ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A                                      ; BYPASS               ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B                                      ; NORMAL               ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED                                 ; FALSE                ; Untyped        ;
+; ENABLE_COHERENT_READ                                       ; FALSE                ; Untyped        ;
+; ENABLE_ECC                                                 ; FALSE                ; Untyped        ;
+; ENABLE_ECC_ENCODER_BYPASS                                  ; FALSE                ; Untyped        ;
+; ENABLE_FORCE_TO_ZERO                                       ; FALSE                ; Untyped        ;
+; ENABLE_RUNTIME_MOD                                         ; NO                   ; Untyped        ;
+; IMPLEMENT_IN_LES                                           ; OFF                  ; Untyped        ;
+; INDATA_REG_B                                               ; CLOCK1               ; Untyped        ;
+; INIT_FILE                                                  ; UNUSED               ; Untyped        ;
+; INIT_FILE_LAYOUT                                           ; PORT_A               ; Untyped        ;
+; init_file_restructured                                     ; UNUSED               ; Untyped        ;
+; INSTANCE_NAME                                              ; UNUSED               ; Untyped        ;
+; LOW_POWER_MODE                                             ; AUTO                 ; Untyped        ;
+; MAXIMUM_DEPTH                                              ; 0                    ; Untyped        ;
+; NUMWORDS_A                                                 ; 256                  ; Signed Integer ;
+; NUMWORDS_B                                                 ; 0                    ; Untyped        ;
+; OPERATION_MODE                                             ; SINGLE_PORT          ; Untyped        ;
+; OUTDATA_ACLR_A                                             ; NONE                 ; Untyped        ;
+; OUTDATA_ACLR_B                                             ; NONE                 ; Untyped        ;
+; OUTDATA_REG_A                                              ; CLOCK0               ; Untyped        ;
+; OUTDATA_REG_B                                              ; UNREGISTERED         ; Untyped        ;
+; OUTDATA_SCLR_A                                             ; NONE                 ; Untyped        ;
+; OUTDATA_SCLR_B                                             ; NONE                 ; Untyped        ;
+; POWER_UP_UNINITIALIZED                                     ; FALSE                ; Untyped        ;
+; RAM_BLOCK_TYPE                                             ; AUTO                 ; Untyped        ;
+; RDADDRESS_CLR_A                                            ; NONE                 ; Untyped        ;
+; RDADDRESS_CLR_B                                            ; NONE                 ; Untyped        ;
+; RDCONTROL_REG_B                                            ; CLOCK1               ; Untyped        ;
+; RDEN_POWER_OPTIMIZATION                                    ; ON                   ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS                         ; DONT_CARE            ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A                              ; DONT_CARE            ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B                              ; NEW_DATA_NO_NBE_READ ; Untyped        ;
+; WIDTH_A                                                    ; 64                   ; Signed Integer ;
+; WIDTH_B                                                    ; 1                    ; Untyped        ;
+; WIDTH_BYTEENA_A                                            ; 1                    ; Signed Integer ;
+; WIDTH_BYTEENA_B                                            ; 1                    ; Untyped        ;
+; WIDTH_ECCENCPARITY                                         ; 8                    ; Untyped        ;
+; WIDTH_ECCSTATUS                                            ; 3                    ; Untyped        ;
+; WIDTHAD2_A                                                 ; 1                    ; Untyped        ;
+; WIDTHAD2_B                                                 ; 1                    ; Untyped        ;
+; WIDTHAD_A                                                  ; 8                    ; Signed Integer ;
+; WIDTHAD_B                                                  ; 1                    ; Untyped        ;
+; CBXI_PARAMETER                                             ; altera_syncram_aio1  ; Untyped        ;
++------------------------------------------------------------+----------------------+----------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition "root_partition" Resource Utilization by Entity                                                                                                                                                                                                                          ;
++-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------+-----------------------------------------------------------------------------+------------------------------+---------------+
+; Compilation Hierarchy Node          ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; IOPLLs ; Full Hierarchy Name                                                         ; Entity Name                  ; Library Name  ;
++-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------+-----------------------------------------------------------------------------+------------------------------+---------------+
+; |                                   ; 269 (269)           ; 377 (377)                 ; 65536             ; 0          ; 0    ; 0            ; 0 (0)  ; |                                                                           ; s3_pipe                      ; altera_work   ;
+;    |\s_ram:0:u0|                    ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:0:u0                                                                 ; ram_s3                       ; ram_s3        ;
+;       |ram_1port_0|                 ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:0:u0|ram_1port_0                                                     ; ram_s3_ram_1port_191_ef7qrwa ; ram_1port_191 ;
+;          |altera_syncram_component| ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:0:u0|ram_1port_0|altera_syncram_component                            ; altera_syncram               ; ram_1port_191 ;
+;             |auto_generated|        ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:0:u0|ram_1port_0|altera_syncram_component|auto_generated             ; altera_syncram_aio1          ; ram_1port_191 ;
+;                |altsyncram1|        ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:0:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1 ; altsyncram_js44              ; altera_work   ;
+;    |\s_ram:1:u0|                    ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:1:u0                                                                 ; ram_s3                       ; ram_s3        ;
+;       |ram_1port_0|                 ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:1:u0|ram_1port_0                                                     ; ram_s3_ram_1port_191_ef7qrwa ; ram_1port_191 ;
+;          |altera_syncram_component| ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:1:u0|ram_1port_0|altera_syncram_component                            ; altera_syncram               ; ram_1port_191 ;
+;             |auto_generated|        ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:1:u0|ram_1port_0|altera_syncram_component|auto_generated             ; altera_syncram_aio1          ; ram_1port_191 ;
+;                |altsyncram1|        ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:1:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1 ; altsyncram_js44              ; altera_work   ;
+;    |\s_ram:2:u0|                    ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:2:u0                                                                 ; ram_s3                       ; ram_s3        ;
+;       |ram_1port_0|                 ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:2:u0|ram_1port_0                                                     ; ram_s3_ram_1port_191_ef7qrwa ; ram_1port_191 ;
+;          |altera_syncram_component| ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:2:u0|ram_1port_0|altera_syncram_component                            ; altera_syncram               ; ram_1port_191 ;
+;             |auto_generated|        ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:2:u0|ram_1port_0|altera_syncram_component|auto_generated             ; altera_syncram_aio1          ; ram_1port_191 ;
+;                |altsyncram1|        ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:2:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1 ; altsyncram_js44              ; altera_work   ;
+;    |\s_ram:3:u0|                    ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:3:u0                                                                 ; ram_s3                       ; ram_s3        ;
+;       |ram_1port_0|                 ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:3:u0|ram_1port_0                                                     ; ram_s3_ram_1port_191_ef7qrwa ; ram_1port_191 ;
+;          |altera_syncram_component| ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:3:u0|ram_1port_0|altera_syncram_component                            ; altera_syncram               ; ram_1port_191 ;
+;             |auto_generated|        ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:3:u0|ram_1port_0|altera_syncram_component|auto_generated             ; altera_syncram_aio1          ; ram_1port_191 ;
+;                |altsyncram1|        ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; 0 (0)  ; \s_ram:3:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1 ; altsyncram_js44              ; altera_work   ;
++-------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------+-----------------------------------------------------------------------------+------------------------------+---------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; s3_busy_o~reg0                        ; Stuck at VCC due to stuck port data_in ;
+; s3_pipe_wren_i[1..3]                  ; Merged with s3_pipe_wren_i[0]          ;
+; ram_counter[2,3]                      ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 6 ;                                        ;
++---------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------------+
+; General Register Statistics for Partition "root_partition" ;
++----------------------------------------------+-------------+
+; Statistic                                    ; Value       ;
++----------------------------------------------+-------------+
+; Total registers                              ; 377         ;
+; Number of registers using Synchronous Clear  ; 2           ;
+; Number of registers using Synchronous Load   ; 0           ;
+; Number of registers using Asynchronous Clear ; 0           ;
+; Number of registers using Asynchronous Load  ; 0           ;
+; Number of registers using Clock Enable       ; 340         ;
+; Number of registers using Preset             ; 0           ;
++----------------------------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+; 16:1               ; 64 bits   ; 640 LEs       ; 128 LEs              ; 512 LEs                ; Yes        ; s3_pipeO.s3_pipe_data_o[1]~reg0 ;
+; 17:1               ; 3 bits    ; 33 LEs        ; 15 LEs               ; 18 LEs                 ; Yes        ; ram_counter[3]                  ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; Mux_55~0                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+
+
++------------------------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Partition "root_partition" ;
++------------------------+-----------------------------------------+
+; Type                   ; Count                                   ;
++------------------------+-----------------------------------------+
+; boundary_port          ; 328                                     ;
+; twentynm_ff            ; 377                                     ;
+;     ENA                ; 338                                     ;
+;     ENA SCLR           ; 2                                       ;
+;     plain              ; 37                                      ;
+; twentynm_lcell_comb    ; 269                                     ;
+;     arith              ; 23                                      ;
+;         1 data inputs  ; 22                                      ;
+;         2 data inputs  ; 1                                       ;
+;     extend             ; 7                                       ;
+;         7 data inputs  ; 7                                       ;
+;     normal             ; 239                                     ;
+;         0 data inputs  ; 1                                       ;
+;         1 data inputs  ; 1                                       ;
+;         2 data inputs  ; 18                                      ;
+;         3 data inputs  ; 18                                      ;
+;         4 data inputs  ; 25                                      ;
+;         5 data inputs  ; 41                                      ;
+;         6 data inputs  ; 135                                     ;
+; twentynm_ram_block     ; 256                                     ;
+;                        ;                                         ;
+; Number of carry chains ; 3                                       ;
+; Max carry chain length ; 8                                       ;
+;                        ;                                         ;
+; Max LUT depth          ; 5.00                                    ;
+; Average LUT depth      ; 1.11                                    ;
++------------------------+-----------------------------------------+
+
+
++-----------------------------------------------------------------+
+; Synthesis Resource Usage Summary for Partition "root_partition" ;
++---------------------------------------------+-------------------+
+; Resource                                    ; Usage             ;
++---------------------------------------------+-------------------+
+; Estimate of Logic utilization (ALMs needed) ; 242               ;
+;                                             ;                   ;
+; Combinational ALUT usage for logic          ; 269               ;
+;     -- 7 input functions                    ; 7                 ;
+;     -- 6 input functions                    ; 135               ;
+;     -- 5 input functions                    ; 41                ;
+;     -- 4 input functions                    ; 25                ;
+;     -- <=3 input functions                  ; 61                ;
+;                                             ;                   ;
+; Dedicated logic registers                   ; 377               ;
+;                                             ;                   ;
+; I/O pins                                    ; 328               ;
+; Total MLAB memory bits                      ; 0                 ;
+; Total block memory bits                     ; 65536             ;
+;                                             ;                   ;
+; Total DSP Blocks                            ; 0                 ;
+;     -- [A] Total Fixed Point DSP Blocks     ; 0                 ;
+;     -- [B] Total Floating Point DSP Blocks  ; 0                 ;
+;                                             ;                   ;
+; Maximum fan-out node                        ; clk_i             ;
+; Maximum fan-out                             ; 633               ;
+; Total fan-out                               ; 5533              ;
+; Average fan-out                             ; 4.50              ;
++---------------------------------------------+-------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Synthesis RAM Summary for Partition "root_partition"                                                                                                                                   ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+------+
+; Name                                                                                   ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF  ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+------+
+; \s_ram:0:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1|ALTSYNCRAM ; AUTO ; Single Port ; 256          ; 64           ; --           ; --           ; 16384 ; None ;
+; \s_ram:1:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1|ALTSYNCRAM ; AUTO ; Single Port ; 256          ; 64           ; --           ; --           ; 16384 ; None ;
+; \s_ram:2:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1|ALTSYNCRAM ; AUTO ; Single Port ; 256          ; 64           ; --           ; --           ; 16384 ; None ;
+; \s_ram:3:u0|ram_1port_0|altera_syncram_component|auto_generated|altsyncram1|ALTSYNCRAM ; AUTO ; Single Port ; 256          ; 64           ; --           ; --           ; 16384 ; None ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+------+
+
+
++--------------------+
+; Synthesis Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Synthesis
+    Info: Version 19.1.0 Build 240 03/26/2019 SJ Pro Edition
+    Info: Processing started: Wed Apr  8 17:54:07 2020
+Info: Command: quartus_syn --read_settings_files=on --write_settings_files=off s3_pipe -c s3_pipe
+Info: qis_default_flow_script.tcl version: #2
+Info: Initializing Synthesis...
+Info: Project = "s3_pipe"
+Info: Revision = "s3_pipe"
+Info: Analyzing source files
+Info: Elaborating from top-level entity "s3_pipe"
+Info (18235): Library search order is as follows: "ram_1port_191; ram_s3". Quartus will look for undefined design units in your libraries in that order. To modify the ordering, please specify a semi-colon separated library list using the assignment LIBRARY_SEARCH_ORDER.
+Info (19337): VHDL info at s3_pipe.vhd(40): executing entity "s3_pipe" with architecture "main" File: C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/s3_pipe.vhd Line: 40
+Info (19337): VHDL info at ram_s3.vhd(10): executing entity "ram_s3" with architecture "rtl" File: C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/ram_s3/synth/ram_s3.vhd Line: 10
+Info (17560): VHDL info at ram_s3.vhd(45): going to verilog side to elaborate module ram_s3_ram_1port_191_ef7qrwa_cmp File: C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/ram_s3/synth/ram_s3.vhd Line: 45
+Info (17561): VHDL info at ram_s3.vhd(45): back to vhdl to continue elaboration File: C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/ram_s3/synth/ram_s3.vhd Line: 45
+Info: Found 7 design entities
+Info: There are 21 partitions after elaboration.
+Info: Creating instance-specific data models and dissolving soft partitions
+Info (18299): Expanding entity and wildcard assignments.
+Info (18300): Expanded entity and wildcard assignments. Elapsed time: 00:00:00
+Info: found pre-synthesis snapshots for 1 partition(s)
+Info: Synthesizing partition "root_partition"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "s3_busy_o" is stuck at VCC File: C:/Users/natha/Desktop/mid_cru_proto/modules/s3_pipe/s3_pipe.vhd Line: 1747
+Info (286030): Timing-Driven Synthesis is running
+Info (21057): Implemented 1111 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 262 input pins
+    Info (21059): Implemented 66 output pins
+    Info (21061): Implemented 527 logic cells
+    Info (21064): Implemented 256 RAM segments
+Info: Successfully synthesized partition
+Info: Saving post-synthesis snapshots for 1 partition(s)
+Info: Quartus Prime Synthesis was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 5297 megabytes
+    Info: Processing ended: Wed Apr  8 17:54:35 2020
+    Info: Elapsed time: 00:00:28
+
+

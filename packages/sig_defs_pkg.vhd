@@ -1,0 +1,284 @@
+-------------------------------------------------------------------------------
+-- --
+-- University of Cape Town, Electrical Engineering Department--
+-- --
+-------------------------------------------------------------------------------
+--
+-- unit name: MID-CRU User logic Signal Definitions (sig_defs_pkg.vhd)
+--
+-- author: Nathan Boyles (nathan.boyles@cern.ch)
+--
+-- date: $Date: 26/02/2019: $:
+--
+-- version: $Rev: 0.1: $:
+--
+-- description: <file content, behaviour, purpose, special usage notes...>
+-- <further description>
+--
+-- dependencies: <entity name>, ...
+--
+-- references: <reference one>
+-- <reference two> ...
+--
+-- modified by: $Author:: $:
+--
+-------------------------------------------------------------------------------
+-- last changes: <date> <initials> <log>
+-- <extended description>
+-------------------------------------------------------------------------------
+-- TODO: <next thing to do>
+-- <another thing to do>
+--
+-------------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+package sig_defs_pkg is
+
+--	type t_midI is --input port definitions for mid top level entity
+--	record
+--		gbt_data_valid_i: std_logic_vector(g_NO_OF_LINKS-1 downto 0);
+--		gbt_isdata_i: std_logic_vector(g_NO_OF_LINKS-1 downto 0);
+--		gbt_data_i: std_logic_vector((g_NO_OF_LINKS*80)-1 downto 0);)
+--	end record;
+
+	type t_midI is --input port definitions for mid top level entity
+	record
+		gbt_data_valid_i: std_logic_vector(15 downto 0);
+		gbt_isdata_i: std_logic_vector(15 downto 0);
+		gbt_data_i: std_logic_vector(1279 downto 0);
+	end record;
+	
+	type t_gbt_rfmtI is --input port definitions for gbt_rfmt component
+	record
+		gbt_data_valid_i: std_logic;
+		gbt_isdata_i: std_logic;
+		gbt_data_i: std_logic_vector(79 downto 0);
+	end record;
+	
+	type t_gbt_rfmtO is --output port definitions for gbt_frmt component
+	record
+	  gbt_rfmt_data_v_o: std_logic_vector(7 downto 0);
+	  gbt_rfmt_data_mt22_7_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt21_7_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt12_7_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt11_7_o: std_logic_vector(63 downto 0);
+	  
+	  gbt_rfmt_data_mt22_6_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt21_6_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt12_6_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt11_6_o: std_logic_vector(63 downto 0);
+	  
+	  gbt_rfmt_data_mt22_5_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt21_5_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt12_5_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt11_5_o: std_logic_vector(63 downto 0);
+	  
+	  gbt_rfmt_data_mt22_4_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt21_4_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt12_4_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt11_4_o: std_logic_vector(63 downto 0);
+	  
+	  gbt_rfmt_data_mt22_3_o: std_logic_vector(63 downto 0); 
+	  gbt_rfmt_data_mt21_3_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt12_3_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt11_3_o: std_logic_vector(63 downto 0);
+	  
+	  gbt_rfmt_data_mt22_2_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt21_2_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt12_2_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt11_2_o: std_logic_vector(63 downto 0);
+	  
+	  gbt_rfmt_data_mt22_1_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt21_1_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt12_1_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt11_1_o: std_logic_vector(63 downto 0);
+	  
+	  gbt_rfmt_data_mt22_0_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt21_0_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt12_0_o: std_logic_vector(63 downto 0);
+	  gbt_rfmt_data_mt11_0_o: std_logic_vector(63 downto 0);
+	end record;
+	
+	type t_loc_rfmtI is --input port definitions for loc_rfmt component
+	record
+		loc_rfmt_data_valid_i: std_logic;
+		loc_rfmt_is_data_i: std_logic;
+		loc_rfmt_reg_data_i: std_logic_vector(7 downto 0);
+		loc_rfmt_loc_data_i: std_logic_vector(7 downto 0);
+	end record;
+	
+	type t_loc_rfmtO is --output port definitions for loc_rfmt component
+	record 
+		loc_rfmt_data_valid_o: std_logic;
+		loc_rfmt_mt22_data_o: std_logic_vector(63 downto 0);
+		loc_rfmt_mt21_data_o: std_logic_vector(63 downto 0);
+		loc_rfmt_mt12_data_o: std_logic_vector(63 downto 0);
+		loc_rfmt_mt11_data_o: std_logic_vector(63 downto 0);
+	end record;
+	
+	type t_o2_h_synthI is --input port definitions for o2_h_syn component
+	record 
+		o2_h_synth_valid_i: std_logic;
+		o2_h_synth_reg_id_i: std_logic_vector(3 downto 0);
+		o2_h_synth_loc_id_i: std_logic_vector(3 downto 0);
+	end record;
+	
+	type t_o2_h_synthO is --output port definitions for o2_h_syn component
+	record
+		o2_h_synth_valid_o: std_logic;
+		o2_h_synth_mt22_o: std_logic_vector(18 downto 0);
+		o2_h_synth_mt21_o: std_logic_vector(18 downto 0);
+		o2_h_synth_mt12_o: std_logic_vector(18 downto 0);
+		o2_h_synth_mt11_o: std_logic_vector(18 downto 0);
+	end record;
+	
+	type t_gbt_sub_syncI is --input port definitions for gbt_sub_sync component
+	record
+		gbt_rfmt_data_v_i: std_logic_vector(7 downto 0);
+		gbt_rfmt_data_7_i: std_logic_vector(63 downto 0);
+		gbt_rfmt_data_6_i: std_logic_vector(63 downto 0);
+		gbt_rfmt_data_5_i: std_logic_vector(63 downto 0);
+		gbt_rfmt_data_4_i: std_logic_vector(63 downto 0);
+		gbt_rfmt_data_3_i: std_logic_vector(63 downto 0);
+		gbt_rfmt_data_2_i: std_logic_vector(63 downto 0);
+		gbt_rfmt_data_1_i: std_logic_vector(63 downto 0);
+		gbt_rfmt_data_0_i: std_logic_vector(63 downto 0);
+	end record;
+	
+	type t_gbt_sub_syncO is --output port definitions for gbt_sub_sync component
+	record
+		gbt_sub_sync_sync_o: std_logic;
+		gbt_sub_sync_data_v_o: std_logic;
+		gbt_sub_sync_data_o: std_logic_vector(63 downto 0);
+	end record;
+	
+	type t_gbt_syncO is --output port definitions for gbt_fifo component
+	record
+		gbt_sync_data_v_o: std_logic;
+		gbt_sync_sync_o: std_logic;
+		gbt_sync_data_mt22_o: std_logic_vector(63 downto 0);
+		gbt_sync_data_mt21_o: std_logic_vector(63 downto 0);
+		gbt_sync_data_mt12_o: std_logic_vector(63 downto 0);
+		gbt_sync_data_mt11_o: std_logic_vector(63 downto 0);	
+	end record;
+	
+	type t_s2_pipeI is
+	record
+		s12_data_v_i: std_logic;
+		reg_7_h_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_7_h_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_7_h_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_7_h_mt11_data_i: std_logic_vector(63 downto 0);
+		reg_7_l_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_7_l_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_7_l_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_7_l_mt11_data_i: std_logic_vector(63 downto 0);
+		--------------------------------------------------
+		reg_6_h_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_6_h_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_6_h_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_6_h_mt11_data_i: std_logic_vector(63 downto 0);
+		reg_6_l_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_6_l_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_6_l_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_6_l_mt11_data_i: std_logic_vector(63 downto 0);
+		--------------------------------------------------
+		reg_5_h_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_5_h_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_5_h_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_5_h_mt11_data_i: std_logic_vector(63 downto 0);
+		reg_5_l_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_5_l_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_5_l_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_5_l_mt11_data_i: std_logic_vector(63 downto 0);
+		--------------------------------------------------
+		reg_4_h_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_4_h_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_4_h_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_4_h_mt11_data_i: std_logic_vector(63 downto 0);
+		reg_4_l_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_4_l_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_4_l_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_4_l_mt11_data_i: std_logic_vector(63 downto 0);
+		--------------------------------------------------
+		reg_3_h_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_3_h_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_3_h_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_3_h_mt11_data_i: std_logic_vector(63 downto 0);
+		reg_3_l_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_3_l_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_3_l_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_3_l_mt11_data_i: std_logic_vector(63 downto 0);
+		--------------------------------------------------
+		reg_2_h_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_2_h_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_2_h_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_2_h_mt11_data_i: std_logic_vector(63 downto 0);
+		reg_2_l_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_2_l_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_2_l_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_2_l_mt11_data_i: std_logic_vector(63 downto 0);
+		--------------------------------------------------
+		reg_1_h_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_1_h_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_1_h_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_1_h_mt11_data_i: std_logic_vector(63 downto 0);
+		reg_1_l_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_1_l_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_1_l_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_1_l_mt11_data_i: std_logic_vector(63 downto 0);
+		--------------------------------------------------
+		reg_0_h_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_0_h_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_0_h_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_0_h_mt11_data_i: std_logic_vector(63 downto 0);
+		reg_0_l_mt22_data_i: std_logic_vector(63 downto 0);
+		reg_0_l_mt21_data_i: std_logic_vector(63 downto 0);
+		reg_0_l_mt12_data_i: std_logic_vector(63 downto 0);
+		reg_0_l_mt11_data_i: std_logic_vector(63 downto 0);
+	end record;
+	
+	type t_s2_sub_pipeI is
+	record
+		s12_data_v_i: std_logic;
+		s2_sub_pipe_data_7_h_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_7_l_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_6_h_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_6_l_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_5_h_i: std_logic_vector(63 downto 0); 
+		s2_sub_pipe_data_5_l_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_4_h_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_4_l_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_3_h_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_3_l_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_2_h_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_2_l_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_1_h_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_1_l_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_0_h_i: std_logic_vector(63 downto 0);
+		s2_sub_pipe_data_0_l_i: std_logic_vector(63 downto 0);
+	end record;
+	
+	type t_s2_sub_pipeO is
+	record
+		s23_data_v_o: std_logic;
+		s2_data_o: std_logic_vector(63 downto 0);
+	end record;
+	
+	type t_s2_pipeO is
+	record
+		s2_pipe_data_mt22_o: t_s2_sub_pipeO;
+		s2_pipe_data_mt21_o: t_s2_sub_pipeO;
+		s2_pipe_data_mt12_o: t_s2_sub_pipeO;
+		s2_pipe_data_mt11_o: t_s2_sub_pipeO;	
+	end record;
+
+	type t_s3_pipeO is
+	record
+		s3_pipe_data_v_o: std_logic;
+		s3_pipe_data_o: std_logic_vector(63 downto 0);
+	end record;
+
+end package sig_defs_pkg;
